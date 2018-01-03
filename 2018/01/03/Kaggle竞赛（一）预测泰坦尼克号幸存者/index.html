@@ -88,7 +88,9 @@
 <meta property="og:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件  train.csv是我们训练用数据，我们将使用这些数据建模 test.csv是测试用数据，我们将用这些数据检验模型的准确度 gender_submossion.csv提供">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg">
-<meta property="og:updated_time" content="2018-01-03T01:21:01.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg">
+<meta property="og:updated_time" content="2018-01-03T23:52:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle竞赛（一）预测泰坦尼克号幸存者">
 <meta name="twitter:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件  train.csv是我们训练用数据，我们将使用这些数据建模 test.csv是测试用数据，我们将用这些数据检验模型的准确度 gender_submossion.csv提供">
@@ -394,7 +396,74 @@
 <li>test.csv是测试用数据，我们将用这些数据检验模型的准确度</li>
 <li>gender_submossion.csv提供给我们知道最后应该提交什么样子的文件</li>
 </ul>
-<h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><p>我个人习惯用Jupyter Notebook，可以直接安装anaconda来简化安装过程</p>
+<h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><p>我个人习惯用<a href="http://jupyter.org/" target="_blank" rel="noopener">Jupyter Notebook</a>，它可以直接生成markdown模式。可以直接安装<a href="https://anaconda.org/" target="_blank" rel="noopener">anaconda</a>，里面就包括了Jupyter Notebook。我们要做的是首先打开Jupyter Notebook，然后在数据集同个目录里新建一个Python notebook。然后正式开始我们的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入几个基本库</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train.csv'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<div><br><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }<br><br>    .dataframe thead th {<br>        text-align: left;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>PassengerId</th><br>      <th>Survived</th><br>      <th>Pclass</th><br>      <th>Name</th><br>      <th>Sex</th><br>      <th>Age</th><br>      <th>SibSp</th><br>      <th>Parch</th><br>      <th>Ticket</th><br>      <th>Fare</th><br>      <th>Cabin</th><br>      <th>Embarked</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Braund, Mr. Owen Harris</td><br>      <td>male</td><br>      <td>22.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>A/5 21171</td><br>      <td>7.2500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>2</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Cumings, Mrs. John Bradley (Florence Briggs Th…</td><br>      <td>female</td><br>      <td>38.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>PC 17599</td><br>      <td>71.2833</td><br>      <td>C85</td><br>      <td>C</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>3</td><br>      <td>1</td><br>      <td>3</td><br>      <td>Heikkinen, Miss. Laina</td><br>      <td>female</td><br>      <td>26.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>STON/O2. 3101282</td><br>      <td>7.9250</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>4</td><br>      <td>1</td><br>      <td>1</td><br>      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><br>      <td>female</td><br>      <td>35.0</td><br>      <td>1</td><br>      <td>0</td><br>      <td>113803</td><br>      <td>53.1000</td><br>      <td>C123</td><br>      <td>S</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>5</td><br>      <td>0</td><br>      <td>3</td><br>      <td>Allen, Mr. William Henry</td><br>      <td>male</td><br>      <td>35.0</td><br>      <td>0</td><br>      <td>0</td><br>      <td>373450</td><br>      <td>8.0500</td><br>      <td>NaN</td><br>      <td>S</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+<p>我们看到这个数据集包括：</p>
+<ol>
+<li>PassengerId，乘客的序号，从第一位开始到最后一位乘客</li>
+<li>Survived，0表示该乘客死亡，1表示生还</li>
+<li>Pclass，从1到3分别表示该乘客搭乘一等舱、二等舱、三等舱</li>
+<li>Name，乘客的姓名，格式是：名，称谓.姓氏</li>
+<li>Sex，乘客的性别，female女，male男</li>
+<li>Age，乘客的年龄</li>
+<li>SibSp，该乘客的兄弟姐妹和配偶也在船上的数量</li>
+<li>Parch，该乘客的父母和子女也在船上的数量</li>
+<li>Ticket，票号</li>
+<li>Fare，票价</li>
+<li>Cabin，客舱号</li>
+<li>Embarked，登船港口，C = Cherbourg, Q = Queenstown, S = Southampton</li>
+</ol>
+<h1 id="几个基本的分析"><a href="#几个基本的分析" class="headerlink" title="几个基本的分析"></a>几个基本的分析</h1><h2 id="训练集统计"><a href="#训练集统计" class="headerlink" title="训练集统计"></a>训练集统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.count()</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId    891
+Survived       891
+Pclass         891
+Name           891
+Sex            891
+Age            714
+SibSp          891
+Parch          891
+Ticket         891
+Fare           891
+Cabin          204
+Embarked       889
+dtype: int64
+</code></pre><p>我们可以看到在训练集train.csv里一共891名乘客，其中Age，Cabin，Embarked不全，为了模型的准确度，我们最好想办法补全它们。</p>
+<h2 id="总体生还率"><a href="#总体生还率" class="headerlink" title="总体生还率"></a>总体生还率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'Survived'</span>].mean()</span><br></pre></td></tr></table></figure>
+<pre><code>0.3838383838383838
+</code></pre><p>总体生还率是38.38%</p>
+<h2 id="按照客舱等级分组"><a href="#按照客舱等级分组" class="headerlink" title="按照客舱等级分组"></a>按照客舱等级分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calss_grouping=df.groupby(<span class="string">'Pclass'</span>).mean()</span><br><span class="line">calss_grouping</span><br></pre></td></tr></table></figure>
+<div><br><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }<br><br>    .dataframe thead th {<br>        text-align: left;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>PassengerId</th><br>      <th>Survived</th><br>      <th>Age</th><br>      <th>SibSp</th><br>      <th>Parch</th><br>      <th>Fare</th><br>    </tr><br>    <tr><br>      <th>Pclass</th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>1</th><br>      <td>461.597222</td><br>      <td>0.629630</td><br>      <td>38.233441</td><br>      <td>0.416667</td><br>      <td>0.356481</td><br>      <td>84.154687</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>445.956522</td><br>      <td>0.472826</td><br>      <td>29.877630</td><br>      <td>0.402174</td><br>      <td>0.380435</td><br>      <td>20.662183</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>439.154786</td><br>      <td>0.242363</td><br>      <td>25.140620</td><br>      <td>0.615071</td><br>      <td>0.393075</td><br>      <td>13.675550</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+<p>我们看到客舱越高级，生还率越高，有钱真好…</p>
+<h2 id="按客舱等级加性别分组"><a href="#按客舱等级加性别分组" class="headerlink" title="按客舱等级加性别分组"></a>按客舱等级加性别分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping = df.groupby([<span class="string">'Pclass'</span>,<span class="string">'Sex'</span>]).mean()</span><br><span class="line">class_sex_grouping</span><br></pre></td></tr></table></figure>
+<div><br><style><br>    .dataframe thead tr:only-child th {<br>        text-align: right;<br>    }<br><br>    .dataframe thead th {<br>        text-align: left;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th></th><br>      <th>PassengerId</th><br>      <th>Survived</th><br>      <th>Age</th><br>      <th>SibSp</th><br>      <th>Parch</th><br>      <th>Fare</th><br>    </tr><br>    <tr><br>      <th>Pclass</th><br>      <th>Sex</th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>      <th></th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th rowspan="2" valign="top">1</th><br>      <th>female</th><br>      <td>469.212766</td><br>      <td>0.968085</td><br>      <td>34.611765</td><br>      <td>0.553191</td><br>      <td>0.457447</td><br>      <td>106.125798</td><br>    </tr><br>    <tr><br>      <th>male</th><br>      <td>455.729508</td><br>      <td>0.368852</td><br>      <td>41.281386</td><br>      <td>0.311475</td><br>      <td>0.278689</td><br>      <td>67.226127</td><br>    </tr><br>    <tr><br>      <th rowspan="2" valign="top">2</th><br>      <th>female</th><br>      <td>443.105263</td><br>      <td>0.921053</td><br>      <td>28.722973</td><br>      <td>0.486842</td><br>      <td>0.605263</td><br>      <td>21.970121</td><br>    </tr><br>    <tr><br>      <th>male</th><br>      <td>447.962963</td><br>      <td>0.157407</td><br>      <td>30.740707</td><br>      <td>0.342593</td><br>      <td>0.222222</td><br>      <td>19.741782</td><br>    </tr><br>    <tr><br>      <th rowspan="2" valign="top">3</th><br>      <th>female</th><br>      <td>399.729167</td><br>      <td>0.500000</td><br>      <td>21.750000</td><br>      <td>0.895833</td><br>      <td>0.798611</td><br>      <td>16.118810</td><br>    </tr><br>    <tr><br>      <th>male</th><br>      <td>455.515850</td><br>      <td>0.135447</td><br>      <td>26.507589</td><br>      <td>0.498559</td><br>      <td>0.224784</td><br>      <td>12.661633</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg"></p>
+<p>每个客舱等级里女性生还几率较大，还是比较绅士的。</p>
+<h2 id="按年龄层分组"><a href="#按年龄层分组" class="headerlink" title="按年龄层分组"></a>按年龄层分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group_by_age = pd.cut(df[<span class="string">"Age"</span>], np.arange(<span class="number">0</span>, <span class="number">90</span>, <span class="number">10</span>))</span><br><span class="line">age_grouping = df.groupby(group_by_age).mean()</span><br><span class="line">age_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg"></p>
+<p>貌似年轻的生还几率比较大。</p>
+<h2 id="测试集统计"><a href="#测试集统计" class="headerlink" title="测试集统计"></a>测试集统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_test=pd.read_csv(<span class="string">'test.csv'</span>)</span><br><span class="line">df_test.count()</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId    418
+Pclass         418
+Name           418
+Sex            418
+Age            332
+SibSp          418
+Parch          418
+Ticket         418
+Fare           417
+Cabin           91
+Embarked       418
+dtype: int64
+</code></pre><p>测试集的数据缺失发生在Age，Fare和Cabin上，和训练集并不一样，这点要注意。</p>
 
       
     </div>
@@ -597,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载数据集"><span class="nav-number">1.</span> <span class="nav-text">下载数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据集"><span class="nav-number">2.</span> <span class="nav-text">导入数据集</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载数据集"><span class="nav-number">1.</span> <span class="nav-text">下载数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据集"><span class="nav-number">2.</span> <span class="nav-text">导入数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几个基本的分析"><span class="nav-number">3.</span> <span class="nav-text">几个基本的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#训练集统计"><span class="nav-number">3.1.</span> <span class="nav-text">训练集统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总体生还率"><span class="nav-number">3.2.</span> <span class="nav-text">总体生还率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按照客舱等级分组"><span class="nav-number">3.3.</span> <span class="nav-text">按照客舱等级分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按客舱等级加性别分组"><span class="nav-number">3.4.</span> <span class="nav-text">按客舱等级加性别分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按年龄层分组"><span class="nav-number">3.5.</span> <span class="nav-text">按年龄层分组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试集统计"><span class="nav-number">3.6.</span> <span class="nav-text">测试集统计</span></a></li></ol></li></ol></div>
             
 
           </div>
