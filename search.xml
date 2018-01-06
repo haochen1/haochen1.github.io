@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[决策树Decision Tree]]></title>
+      <url>/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/</url>
+      <content type="html"><![CDATA[<p>继上篇博客<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>。现在正式进入机器学习的算法部分，我想介绍的第一个是决策树Decision Tree。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Decision Tree</span></span><br><span class="line">score=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    clf_dt = tree.DecisionTreeClassifier(max_depth=i)</span><br><span class="line">    clf_dt.fit (X_train, y_train)</span><br><span class="line">    score.append(clf_dt.score (X_test, y_test))</span><br><span class="line">plt.bar(range(<span class="number">1</span>,<span class="number">20</span>),score)</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fn5fnhiuqtj20ah070jr8.jpg"></p>
+<p>我们看出来3层是最好的深度。然后我们用cross-validation来算20次随机分配后的准确度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">clf_dt = tree.DecisionTreeClassifier(max_depth=<span class="number">3</span>)</span><br><span class="line">shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=<span class="number">20</span>, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_classifier</span><span class="params">(clf)</span>:</span></span><br><span class="line">    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)</span><br><span class="line">    print(<span class="string">"Accuracy: %0.4f (+/- %0.2f)"</span> % (scores.mean(), scores.std()))</span><br><span class="line">test_classifier(clf_dt)</span><br></pre></td></tr></table></figure>
+<pre><code>Accuracy: 0.8149 (+/- 0.03)
+</code></pre><p>最后，3层决策树的准确度大概是81.49%</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+            <category> 分类问题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分类问题 </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理]]></title>
+      <url>/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/</url>
+      <content type="html"><![CDATA[<p>在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。</p>
+<h1 id="下载数据集"><a href="#下载数据集" class="headerlink" title="下载数据集"></a>下载数据集</h1><p>进入<a href="https://www.kaggle.com/c/titanic/data" target="_blank" rel="noopener">Kaggle Titanic</a>页面下载数据集，我们可以看到这里有三个csv文件<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg"></p>
+<ul>
+<li>train.csv是我们训练用数据，我们将使用这些数据建模</li>
+<li>test.csv是测试用数据，我们将用这些数据检验模型的准确度</li>
+<li>gender_submossion.csv提供给我们知道最后应该提交什么样子的文件</li>
+</ul>
+<h1 id="导入数据集"><a href="#导入数据集" class="headerlink" title="导入数据集"></a>导入数据集</h1><p>我个人习惯用<a href="http://jupyter.org/" target="_blank" rel="noopener">Jupyter Notebook</a>，它可以直接生成markdown模式。可以直接安装<a href="https://anaconda.org/" target="_blank" rel="noopener">anaconda</a>，里面就包括了Jupyter Notebook。我们要做的是首先打开Jupyter Notebook，然后在数据集同个目录里新建一个Python notebook。然后正式开始我们的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入几个基本库</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train.csv'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg"></p>
+<p>我们看到这个数据集包括：</p>
+<ol>
+<li>PassengerId，乘客的序号，从第一位开始到最后一位乘客</li>
+<li>Survived，0表示该乘客死亡，1表示生还</li>
+<li>Pclass，从1到3分别表示该乘客搭乘一等舱、二等舱、三等舱</li>
+<li>Name，乘客的姓名，格式是：名，称谓.姓氏</li>
+<li>Sex，乘客的性别，female女，male男</li>
+<li>Age，乘客的年龄</li>
+<li>SibSp，该乘客的兄弟姐妹和配偶也在船上的数量</li>
+<li>Parch，该乘客的父母和子女也在船上的数量</li>
+<li>Ticket，票号</li>
+<li>Fare，票价</li>
+<li>Cabin，客舱号</li>
+<li>Embarked，登船港口，C = Cherbourg, Q = Queenstown, S = Southampton</li>
+</ol>
+<h1 id="几个基本的分析"><a href="#几个基本的分析" class="headerlink" title="几个基本的分析"></a>几个基本的分析</h1><h2 id="训练集统计"><a href="#训练集统计" class="headerlink" title="训练集统计"></a>训练集统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.count()</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId    891
+Survived       891
+Pclass         891
+Name           891
+Sex            891
+Age            714
+SibSp          891
+Parch          891
+Ticket         891
+Fare           891
+Cabin          204
+Embarked       889
+dtype: int64
+</code></pre><p>我们可以看到在训练集train.csv里一共891名乘客，其中Age，Cabin，Embarked不全，为了模型的准确度，我们最好想办法补全它们。</p>
+<h2 id="总体生还率"><a href="#总体生还率" class="headerlink" title="总体生还率"></a>总体生还率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'Survived'</span>].mean()</span><br></pre></td></tr></table></figure>
+<pre><code>0.3838383838383838
+</code></pre><p>总体生还率是38.38%</p>
+<h2 id="按照客舱等级分组"><a href="#按照客舱等级分组" class="headerlink" title="按照客舱等级分组"></a>按照客舱等级分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calss_grouping=df.groupby(<span class="string">'Pclass'</span>).mean()</span><br><span class="line">calss_grouping</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fz3neqj20d003tdga.jpg"></p>
+<p>我们看到客舱越高级，生还率越高，有钱真好…</p>
+<h2 id="按客舱等级加性别分组"><a href="#按客舱等级加性别分组" class="headerlink" title="按客舱等级加性别分组"></a>按客舱等级加性别分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping = df.groupby([<span class="string">'Pclass'</span>,<span class="string">'Sex'</span>]).mean()</span><br><span class="line">class_sex_grouping</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49intgf2j20ew0630to.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg"></p>
+<p>每个客舱等级里女性生还几率较大，还是比较绅士的。</p>
+<h2 id="按年龄层分组"><a href="#按年龄层分组" class="headerlink" title="按年龄层分组"></a>按年龄层分组</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group_by_age = pd.cut(df[<span class="string">"Age"</span>], np.arange(<span class="number">0</span>, <span class="number">90</span>, <span class="number">10</span>))</span><br><span class="line">age_grouping = df.groupby(group_by_age).mean()</span><br><span class="line">age_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg"></p>
+<p>貌似年轻的生还几率比较大。</p>
+<h2 id="测试集统计"><a href="#测试集统计" class="headerlink" title="测试集统计"></a>测试集统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_test=pd.read_csv(<span class="string">'test.csv'</span>)</span><br><span class="line">df_test.count()</span><br></pre></td></tr></table></figure>
+<pre><code>PassengerId    418
+Pclass         418
+Name           418
+Sex            418
+Age            332
+SibSp          418
+Parch          418
+Ticket         418
+Fare           417
+Cabin           91
+Embarked       418
+dtype: int64
+</code></pre><p>测试集的数据缺失发生在Age，Fare和Cabin上，和训练集并不一样，这点要注意。</p>
+<h1 id="处理缺失数据"><a href="#处理缺失数据" class="headerlink" title="处理缺失数据"></a>处理缺失数据</h1><h2 id="处理年龄"><a href="#处理年龄" class="headerlink" title="处理年龄"></a>处理年龄</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同称谓的年龄中位数</span></span><br><span class="line">title_age_grouping=df[[<span class="string">'Title'</span>,<span class="string">'Age'</span>]].groupby(<span class="string">'Title'</span>).median()</span><br><span class="line">title_age_grouping.plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全年龄的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_ages</span><span class="params">(df,title_age_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(title_age_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> df.loc[i,<span class="string">'Title'</span>] == title_age_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Age'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Age'</span>]=title_age_grouping.Age[j]</span><br></pre></td></tr></table></figure>
+<h2 id="处理票价"><a href="#处理票价" class="headerlink" title="处理票价"></a>处理票价</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同客舱等级和称谓的票价中位数</span></span><br><span class="line">class_title_fare_grouping=df[[<span class="string">'Pclass'</span>,<span class="string">'Title'</span>,<span class="string">'Fare'</span>]].groupby([<span class="string">'Pclass'</span>,<span class="string">'Title'</span>]).median()</span><br><span class="line">class_title_fare_grouping.plot.bar()</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全票价的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_fares</span><span class="params">(df,class_title_fare_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(class_title_fare_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> (df.loc[i,<span class="string">'Pclass'</span>], df.loc[i,<span class="string">'Title'</span>])== class_title_fare_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Fare'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Fare'</span>]=class_title_fare_grouping.Fare[j]</span><br></pre></td></tr></table></figure>
+<h1 id="最后总体处理"><a href="#最后总体处理" class="headerlink" title="最后总体处理"></a>最后总体处理</h1><ol>
+<li>把上面的补全年龄和票价的函数用在数据集上，</li>
+<li>先将’Cabin’列drop掉，因为缺少很多数据，并且我没想到怎么样补全客舱数据，</li>
+<li>将缺少数据的行用df.dropna()清理掉，</li>
+<li>再将无用的行’PassengerId’,’Name’,’Ticket’列drop掉，</li>
+<li>编码</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">preprocess_titanic_df</span><span class="params">(df,title_age_grouping,class_title_fare_grouping)</span>:</span></span><br><span class="line">    <span class="comment">#copy</span></span><br><span class="line">    processed_df = df.copy()</span><br><span class="line">    <span class="comment">#get titles</span></span><br><span class="line">    get_titles(processed_df)</span><br><span class="line">    <span class="comment">#fill missing ages</span></span><br><span class="line">    fill_ages(processed_df,title_age_grouping)</span><br><span class="line">    <span class="comment">#fill missing fares</span></span><br><span class="line">    fill_fares(processed_df,class_title_fare_grouping)</span><br><span class="line">    <span class="comment">#drop cabin variable</span></span><br><span class="line">    processed_df = processed_df.drop([<span class="string">'Cabin'</span>], axis=<span class="number">1</span>)</span><br><span class="line">    <span class="comment">#drop na</span></span><br><span class="line">    processed_df = processed_df.dropna()</span><br><span class="line">    <span class="comment">#label encoder</span></span><br><span class="line">    le = preprocessing.LabelEncoder()</span><br><span class="line">    processed_df.Sex = le.fit_transform(processed_df.Sex)</span><br><span class="line">    processed_df.Embarked = le.fit_transform(processed_df.Embarked)</span><br><span class="line">    processed_df.Title = le.fit_transform(processed_df.Title)</span><br><span class="line">    processed_df = processed_df.drop([<span class="string">'PassengerId'</span>,<span class="string">'Name'</span>,<span class="string">'Ticket'</span>],axis=<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> processed_df</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">processed_df = preprocess_titanic_df(df,title_age_grouping,class_title_fare_grouping)</span><br><span class="line">processed_df.count()</span><br></pre></td></tr></table></figure>
+<pre><code>Survived    889
+Pclass      889
+Sex         889
+Age         889
+SibSp       889
+Parch       889
+Fare        889
+Embarked    889
+Title       889
+dtype: int64
+</code></pre><p>最后将训练集分成80%的训练集train和20%的验证集test，注意区分这里的验证集test是已知结果的，用来验证比较各种模型。最后我们还有test.csv是未知结果的，用来最后验证准确度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> model_selection</span><br><span class="line"></span><br><span class="line">X = processed_df.drop([<span class="string">'Survived'</span>], axis=<span class="number">1</span>).values</span><br><span class="line">y = processed_df[<span class="string">'Survived'</span>].values</span><br><span class="line">                </span><br><span class="line">X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=<span class="number">0.2</span>)  </span><br><span class="line"></span><br><span class="line">print(<span class="string">'X_train'</span>,X_train.shape)</span><br><span class="line">print(<span class="string">'y_train'</span>,y_train.shape)</span><br><span class="line">print(<span class="string">'X_test'</span>,X_test.shape)</span><br><span class="line">print(<span class="string">'y_test'</span>,y_test.shape)</span><br></pre></td></tr></table></figure>
+<pre><code>X_train (711, 8)
+y_train (711,)
+X_test (178, 8)
+y_test (178,)
+</code></pre><p>现在数据预处理已经完成，下一步正式进入机器学习分类算法。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+            <category> 分类问题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Kaggle </tag>
+            
+            <tag> 分类问题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Kaggle平台]]></title>
+      <url>/2018/01/02/Kaggle%E5%B9%B3%E5%8F%B0/</url>
+      <content type="html"><![CDATA[<h1 id="为什么要先介绍Kaggle"><a href="#为什么要先介绍Kaggle" class="headerlink" title="为什么要先介绍Kaggle"></a>为什么要先介绍<a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a></h1><p>前段时间一直在找工作，在面试过程中经常被问到“你是否有Kaggle排名？”，我说“没有”，然后就被堵“没有，怎么证明你比别人更懂数据科学？”。。。</p>
+<p>还是学生时，没有太注意积累这些排名，现在补估计还来得及。</p>
+<p>另外，我发现传统的数据科学学习模式，先介绍一大堆的理论和算法，学到后面前面的就忘了，所以我想着是不是可以先介绍一个具体案例，然后把分类或回归的算法一个个用在上面。</p>
+<h1 id="所以什么是Kaggle"><a href="#所以什么是Kaggle" class="headerlink" title="所以什么是Kaggle"></a>所以什么是<a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a></h1><p>就像国内阿里的天池大数据平台，<a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a>是国外领先的数据科学、机器学习竞赛平台，最近已经被Google收购。我们可以在上面下载数据集，应用我们机器学习的算法来找出结果，最后提交结果获得排名，如果你参加的是有报酬的竞赛，进入前几名还能获得报酬。最后你还能跟别人组队参赛，或者在网站上的Kernel里分享你的代码，和别人进行讨论。</p>
+<h1 id="如何注册Kaggle"><a href="#如何注册Kaggle" class="headerlink" title="如何注册Kaggle"></a>如何注册<a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a></h1><ol>
+<li>进入<a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a>，网址是<a href="https://www.kaggle.com/" target="_blank" rel="noopener">https://www.kaggle.com/</a></li>
+<li>点击下面的Create an account</li>
+<li>在弹出的窗口中，可以选择用Facebook、Google或Yahoo的账号注册，也可以点击Manually create a new account选择手动录入信息</li>
+<li>输入一切信息后，你就有一个Kaggle账号了，以后kaggle.com/username（你刚刚输入的用户名）就是你的kaggle主页了</li>
+<li>登录账号后，最上方的<a href="https://www.kaggle.com/competitions" target="_blank" rel="noopener">Competitions</a>就是我们参加各种竞赛的地方；<a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener">Datasets</a>是下载所有数据集的页面，其中包括不是竞赛的数据集；<a href="https://www.kaggle.com/kernels" target="_blank" rel="noopener">Kernels</a>是分享代码的页面，支持markdown。</li>
+<li>等我们参加了竞赛有排名后，我们就能点击右上角的头像进入My Profile来看我们的排名。像我的页面就是<a href="https://www.kaggle.com/haochen1" target="_blank" rel="noopener">https://www.kaggle.com/haochen1</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Kaggle </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/2017/12/30/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+</search>
