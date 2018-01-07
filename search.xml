@@ -77,7 +77,11 @@
 <p>另外，无论是ID3还是C4.5最好在小数据集上使用，决策树分类一般只试用于小数据。当属性取值很多时最好选择C4.5算法，ID3得出的效果会非常差，因为使用信息增益划分时它倾向于取值多的属性。</p>
 <h3 id="CART算法"><a href="#CART算法" class="headerlink" title="CART算法"></a>CART算法</h3><p>在CART算法，我们将用到基尼指数，随机森林中用到的属性划分标准也是它。Gini index划分是二元的，<strong>它度量的是数据分区或训练元组集D的不纯度，表示的是一个随机选中的样本在子集中被分错的可能性</strong>。</p>
 <p>对于每个属性，考虑每种可能的二元划分，对于离散值属性，<strong>选择该属性产生最小Gini指数的自己作为它的分裂信息</strong>。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1>]]></content>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li>刘帝伟的博客 <a href="http://www.csuldw.com/2015/05/08/2015-05-08-decision%20tree" target="_blank" rel="noopener">http://www.csuldw.com/2015/05/08/2015-05-08-decision%20tree</a>    </li>
+<li>Machine Learning in action <a href="https://www.manning.com/books/machine-learning-in-action" target="_blank" rel="noopener">https://www.manning.com/books/machine-learning-in-action</a> </li>
+</ol>
+]]></content>
       
         <categories>
             
@@ -215,9 +219,9 @@ y_test (178,)
         
         <tags>
             
-            <tag> 分类问题 </tag>
-            
             <tag> Kaggle </tag>
+            
+            <tag> 分类问题 </tag>
             
         </tags>
         
