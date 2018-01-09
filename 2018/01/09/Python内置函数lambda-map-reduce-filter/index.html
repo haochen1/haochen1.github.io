@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="分类问题,算法," />
+  <meta name="keywords" content="Python," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
-<meta name="keywords" content="分类问题,算法">
+<meta name="description" content="适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读 lambda运算符函数形式： 1lambda argument_list: expression 用lambda开头，然后加上所有需要在函数中使用的元素，中间用逗号隔开。元素后面加冒号，冒号后面加上函数体。 12sum = lambda x, y : x + ysum(3,4)">
+<meta name="keywords" content="Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随机森林Random Forest">
-<meta property="og:url" content="http://yoursite.com/2018/01/07/随机森林Random-Forest/index.html">
+<meta property="og:title" content="Python内置函数lambda,map,reduce,filter">
+<meta property="og:url" content="http://yoursite.com/2018/01/09/Python内置函数lambda-map-reduce-filter/index.html">
 <meta property="og:site_name" content="机器学习之路">
-<meta property="og:description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
+<meta property="og:description" content="适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读 lambda运算符函数形式： 1lambda argument_list: expression 用lambda开头，然后加上所有需要在函数中使用的元素，中间用逗号隔开。元素后面加冒号，冒号后面加上函数体。 12sum = lambda x, y : x + ysum(3,4)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg">
-<meta property="og:updated_time" content="2018-01-07T22:28:55.000Z">
+<meta property="og:updated_time" content="2018-01-09T19:33:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随机森林Random Forest">
-<meta name="twitter:description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg">
+<meta name="twitter:title" content="Python内置函数lambda,map,reduce,filter">
+<meta name="twitter:description" content="适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读 lambda运算符函数形式： 1lambda argument_list: expression 用lambda开头，然后加上所有需要在函数中使用的元素，中间用逗号隔开。元素后面加冒号，冒号后面加上函数体。 12sum = lambda x, y : x + ysum(3,4)">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/07/随机森林Random-Forest/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/09/Python内置函数lambda-map-reduce-filter/"/>
 
 
 
 
 
-  <title>随机森林Random Forest | 机器学习之路</title>
+  <title>Python内置函数lambda,map,reduce,filter | 机器学习之路</title>
   
 
 
@@ -308,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/随机森林Random-Forest/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/Python内置函数lambda-map-reduce-filter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hao Chen">
@@ -325,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">随机森林Random Forest</h1>
+          <h1 class="post-title" itemprop="name headline">Python内置函数lambda,map,reduce,filter</h1>
         
 
         <div class="post-meta">
@@ -337,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-07T03:08:23+01:00">
-                2018-01-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T18:49:22+01:00">
+                2018-01-09
               </time>
             
 
@@ -360,19 +358,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/分类问题/" itemprop="url" rel="index">
-                    <span itemprop="name">分类问题</span>
+                  <a href="/categories/Python编程/" itemprop="url" rel="index">
+                    <span itemprop="name">Python编程</span>
                   </a>
                 </span>
 
@@ -389,9 +376,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/07/随机森林Random-Forest/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/09/Python内置函数lambda-map-reduce-filter/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/07/随机森林Random-Forest/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/09/Python内置函数lambda-map-reduce-filter/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,7 +386,7 @@
 
           
           
-             <span id="/2018/01/07/随机森林Random-Forest/" class="leancloud_visitors" data-flag-title="随机森林Random Forest">
+             <span id="/2018/01/09/Python内置函数lambda-map-reduce-filter/" class="leancloud_visitors" data-flag-title="Python内置函数lambda,map,reduce,filter">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -430,42 +417,41 @@
       
 
       
-        <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>在完成<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>后，我们首先使用了分类里最基本的算法<a href="https://haochen1.github.io/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/" target="_blank" rel="noopener">决策树</a>来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 载入准确度检验函数</span></span><br><span class="line">shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=<span class="number">20</span>, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_classifier</span><span class="params">(clf)</span>:</span></span><br><span class="line">    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)</span><br><span class="line">    print(<span class="string">"Accuracy: %0.4f (+/- %0.2f)"</span> % (scores.mean(), scores.std()))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.ensemble <span class="keyword">as</span> ske</span><br><span class="line"><span class="comment"># Random forest </span></span><br><span class="line">clf_rf = ske.RandomForestClassifier(n_estimators=<span class="number">100</span>)</span><br><span class="line">clf_rf.fit (X_train, y_train)</span><br><span class="line">test_classifier(clf_rf)</span><br></pre></td></tr></table></figure>
-<pre><code>Accuracy: 0.8101 (+/- 0.03)
-</code></pre><p>和上篇类似，如果只对代码感兴趣，可以在此停住。下面会是一些原理部分。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>classification tree非常简单，但是经常会有noisy classifiers. 于是引入ensemble classifiers: bagging, random forest（决策树和bagging的结合）, 和boosting。</p>
-<p>一般的，用团体学习会比不用的算法准确度高， Boosting &gt; Bagging &gt; Classification tree(single tree)。</p>
-<h2 id="Bagging装袋算法"><a href="#Bagging装袋算法" class="headerlink" title="Bagging装袋算法"></a>Bagging装袋算法</h2><p>Bagging算法 （英语：Bootstrap aggregating，引导聚集算法），又称装袋算法，是机器学习领域的一种团体学习ensemble算法。最初由Leo Breiman于1994年提出。 Bagging算法可与其他分类、回归算法结合，提高其准确率、稳定性的同时，通过降低结果的方差，避免过拟合的发生。</p>
-<p>Bagging的策略：</p>
+        <p>适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读</p>
+<h1 id="lambda运算符"><a href="#lambda运算符" class="headerlink" title="lambda运算符"></a>lambda运算符</h1><p>函数形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> argument_list: expression</span><br></pre></td></tr></table></figure>
+<p>用lambda开头，然后加上所有需要在函数中使用的元素，中间用逗号隔开。元素后面加冒号，冒号后面加上函数体。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="keyword">lambda</span> x, y : x + y</span><br><span class="line">sum(<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>7
+</code></pre><h1 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h1><p>如果把map和lambda结合使用在一起，可以使函数的定义变得更加方便。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = map(func, seq)</span><br></pre></td></tr></table></figure>
+<p>简单来讲，map函数就是把定义的函数func运用到seq里的每一个元素上。Python2里的map函数直接返回一个list，Python3里的map函数返回一个迭代器，所以如果想要一个数列，要用list()转换迭代器结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 摄氏度变华氏度</span></span><br><span class="line">C = [<span class="number">39.2</span>, <span class="number">36.5</span>, <span class="number">37.3</span>, <span class="number">38</span>, <span class="number">37.8</span>]</span><br><span class="line">F = list(map(<span class="keyword">lambda</span> x: (float(<span class="number">9</span>)/<span class="number">5</span>)*x + <span class="number">32</span>, C))</span><br><span class="line">print(F)</span><br></pre></td></tr></table></figure>
+<pre><code>[102.56, 97.7, 99.14, 100.4, 100.03999999999999]
+</code></pre><p>map()函数可以应用到多于一个列表上。每个列表的长度必须一样才能应用到map()函数里，过程是先把函数应用到每个列表的第一个元素上，然后每个列表的第二个元素上，以此类推。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">b = [<span class="number">17</span>,<span class="number">12</span>,<span class="number">11</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">list(map(<span class="keyword">lambda</span> x,y:x+y, a,b))</span><br></pre></td></tr></table></figure>
+<pre><code>[18, 14, 14, 14]
+</code></pre><h1 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter()函数"></a>filter()函数</h1><p>filter()函数提供了一种可以方便过滤掉一个数列中不需要的元素的形式。其中的function是一个描述过滤条件的函数，返回值是true或false。过程也是把function函数应用到sequence里的每一个元素上，如果function函数返回true，则这个元素会被去掉。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter(function, sequence)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fibonacci = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">13</span>,<span class="number">21</span>,<span class="number">34</span>,<span class="number">55</span>]</span><br><span class="line">odd_numbers = list(filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span>, fibonacci))</span><br><span class="line">print(odd_numbers)</span><br></pre></td></tr></table></figure>
+<pre><code>[1, 1, 3, 5, 13, 21, 55]
+</code></pre><h1 id="reduce-函数"><a href="#reduce-函数" class="headerlink" title="reduce()函数"></a>reduce()函数</h1><p>正如它的名字，reduce函数将减少数列中的元素个数。func是有两个输入，返回一个值得函数。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(func, seq)</span><br></pre></td></tr></table></figure>
+<p>如果seq= [ s1, s2, s3, … , sn ]，使用reduce(func, seq)过程如下：</p>
 <ul>
-<li>从样本集中用Bootstrap采样选出n个样本</li>
-<li>在所有属性上，对这n个样本建立分类器（CART or SVM or …）</li>
-<li>重复以上两步m次，i.e.build m个分类器（CART or SVM or …）</li>
-<li>将数据放在这m个分类器上跑，最后vote看到底分到哪一类</li>
+<li>第一步先将func运用到数列里前两个元素上[ func(s1, s2), s3, … , sn ]</li>
+<li>第二步将func运用到第一步的结果和数列里前三个元素上[func(func(s1, s2),s3), … , sn ]</li>
+<li>以此类推，直到最后只输出一个元素</li>
 </ul>
-<p>下图是Bagging的选择策略，每次从N个数据中采样n次得到n个数据的一个bag，总共选择B次得到B个bags，也就是B个bootstrap samples.</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg"></p>
-<h2 id="Random-forest随机森林"><a href="#Random-forest随机森林" class="headerlink" title="Random forest随机森林"></a>Random forest随机森林</h2><p>随机森林在bagging基础上做了修改。</p>
-<ul>
-<li>从样本集中用Bootstrap采样选出n个样本，预建立CART</li>
-</ul>
-<ul>
-<li>在树的每个节点上，从所有属性中随机选择k个属性，选择出一个最佳分割属性作为节点</li>
-</ul>
-<ul>
-<li>重复以上两步m次，i.e.build m棵CART</li>
-</ul>
-<ul>
-<li>这m个CART形成Random Forest</li>
-</ul>
-<p>这里的random就是指</p>
-<ol>
-<li>Bootstrap中的随机选择子样本   </li>
-<li>Random subspace的算法从属性集中随机选择k个属性，每个树节点分裂时，从这随机的k个属性，选择最优的</li>
-</ol>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].统计学习方法——CART, Bagging, Random Forest, Boosting <a href="http://blog.csdn.net/abcjennifer/article/details/8164315" target="_blank" rel="noopener">http://blog.csdn.net/abcjennifer/article/details/8164315</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line">functools.reduce(<span class="keyword">lambda</span> x,y: x+y, [<span class="number">47</span>,<span class="number">11</span>,<span class="number">42</span>,<span class="number">13</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>113
+</code></pre><p>另外一个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line">f = <span class="keyword">lambda</span> a,b: a <span class="keyword">if</span> (a &gt; b) <span class="keyword">else</span> b</span><br><span class="line">reduce(f, [<span class="number">47</span>,<span class="number">11</span>,<span class="number">42</span>,<span class="number">102</span>,<span class="number">13</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>102
+</code></pre><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. Python 3 Tutorial <a href="https://www.python-course.eu/python3_lambda.php" target="_blank" rel="noopener">https://www.python-course.eu/python3_lambda.php</a></p>
 
       
     </div>
@@ -483,9 +469,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/分类问题/" rel="tag"># 分类问题</a>
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/Python/" rel="tag"># Python</a>
           
         </div>
       
@@ -513,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/05/决策树Decision-Tree/" rel="next" title="决策树Decision Tree">
-                <i class="fa fa-chevron-left"></i> 决策树Decision Tree
+              <a href="/2018/01/08/集成学习Ensemble和Boosting算法/" rel="next" title="集成学习Ensemble和Boosting算法">
+                <i class="fa fa-chevron-left"></i> 集成学习Ensemble和Boosting算法
               </a>
             
           </div>
@@ -522,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/08/集成学习Ensemble和Boosting算法/" rel="prev" title="集成学习Ensemble和Boosting算法">
-                集成学习Ensemble和Boosting算法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -699,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging装袋算法"><span class="nav-number">2.1.</span> <span class="nav-text">Bagging装袋算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-forest随机森林"><span class="nav-number">2.2.</span> <span class="nav-text">Random forest随机森林</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lambda运算符"><span class="nav-number">1.</span> <span class="nav-text">lambda运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#map-函数"><span class="nav-number">2.</span> <span class="nav-text">map()函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filter-函数"><span class="nav-number">3.</span> <span class="nav-text">filter()函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reduce-函数"><span class="nav-number">4.</span> <span class="nav-text">reduce()函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -882,9 +862,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/01/07/随机森林Random-Forest/';
-          this.page.identifier = '2018/01/07/随机森林Random-Forest/';
-          this.page.title = '随机森林Random Forest';
+          this.page.url = 'http://yoursite.com/2018/01/09/Python内置函数lambda-map-reduce-filter/';
+          this.page.identifier = '2018/01/09/Python内置函数lambda-map-reduce-filter/';
+          this.page.title = 'Python内置函数lambda,map,reduce,filter';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://haochen1.disqus.com/embed.js';

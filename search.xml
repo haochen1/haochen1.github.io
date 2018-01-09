@@ -3,6 +3,108 @@
   
     
     <entry>
+      <title><![CDATA[Python内置函数lambda,map,reduce,filter]]></title>
+      <url>/2018/01/09/Python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0lambda-map-reduce-filter/</url>
+      <content type="html"><![CDATA[<p>适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读</p>
+<h1 id="lambda运算符"><a href="#lambda运算符" class="headerlink" title="lambda运算符"></a>lambda运算符</h1><p>函数形式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">lambda</span> argument_list: expression</span><br></pre></td></tr></table></figure>
+<p>用lambda开头，然后加上所有需要在函数中使用的元素，中间用逗号隔开。元素后面加冒号，冒号后面加上函数体。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="keyword">lambda</span> x, y : x + y</span><br><span class="line">sum(<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>7
+</code></pre><h1 id="map-函数"><a href="#map-函数" class="headerlink" title="map()函数"></a>map()函数</h1><p>如果把map和lambda结合使用在一起，可以使函数的定义变得更加方便。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r = map(func, seq)</span><br></pre></td></tr></table></figure>
+<p>简单来讲，map函数就是把定义的函数func运用到seq里的每一个元素上。Python2里的map函数直接返回一个list，Python3里的map函数返回一个迭代器，所以如果想要一个数列，要用list()转换迭代器结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 摄氏度变华氏度</span></span><br><span class="line">C = [<span class="number">39.2</span>, <span class="number">36.5</span>, <span class="number">37.3</span>, <span class="number">38</span>, <span class="number">37.8</span>]</span><br><span class="line">F = list(map(<span class="keyword">lambda</span> x: (float(<span class="number">9</span>)/<span class="number">5</span>)*x + <span class="number">32</span>, C))</span><br><span class="line">print(F)</span><br></pre></td></tr></table></figure>
+<pre><code>[102.56, 97.7, 99.14, 100.4, 100.03999999999999]
+</code></pre><p>map()函数可以应用到多于一个列表上。每个列表的长度必须一样才能应用到map()函数里，过程是先把函数应用到每个列表的第一个元素上，然后每个列表的第二个元素上，以此类推。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line">b = [<span class="number">17</span>,<span class="number">12</span>,<span class="number">11</span>,<span class="number">10</span>]</span><br><span class="line"></span><br><span class="line">list(map(<span class="keyword">lambda</span> x,y:x+y, a,b))</span><br></pre></td></tr></table></figure>
+<pre><code>[18, 14, 14, 14]
+</code></pre><h1 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter()函数"></a>filter()函数</h1><p>filter()函数提供了一种可以方便过滤掉一个数列中不需要的元素的形式。其中的function是一个描述过滤条件的函数，返回值是true或false。过程也是把function函数应用到sequence里的每一个元素上，如果function函数返回true，则这个元素会被去掉。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filter(function, sequence)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fibonacci = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">13</span>,<span class="number">21</span>,<span class="number">34</span>,<span class="number">55</span>]</span><br><span class="line">odd_numbers = list(filter(<span class="keyword">lambda</span> x: x % <span class="number">2</span>, fibonacci))</span><br><span class="line">print(odd_numbers)</span><br></pre></td></tr></table></figure>
+<pre><code>[1, 1, 3, 5, 13, 21, 55]
+</code></pre><h1 id="reduce-函数"><a href="#reduce-函数" class="headerlink" title="reduce()函数"></a>reduce()函数</h1><p>正如它的名字，reduce函数将减少数列中的元素个数。func是有两个输入，返回一个值得函数。</p>
+<p>函数形式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(func, seq)</span><br></pre></td></tr></table></figure>
+<p>如果seq= [ s1, s2, s3, … , sn ]，使用reduce(func, seq)过程如下：</p>
+<ul>
+<li>第一步先将func运用到数列里前两个元素上[ func(s1, s2), s3, … , sn ]</li>
+<li>第二步将func运用到第一步的结果和数列里前三个元素上[func(func(s1, s2),s3), … , sn ]</li>
+<li>以此类推，直到最后只输出一个元素</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line">functools.reduce(<span class="keyword">lambda</span> x,y: x+y, [<span class="number">47</span>,<span class="number">11</span>,<span class="number">42</span>,<span class="number">13</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>113
+</code></pre><p>另外一个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line">f = <span class="keyword">lambda</span> a,b: a <span class="keyword">if</span> (a &gt; b) <span class="keyword">else</span> b</span><br><span class="line">reduce(f, [<span class="number">47</span>,<span class="number">11</span>,<span class="number">42</span>,<span class="number">102</span>,<span class="number">13</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>102
+</code></pre><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. Python 3 Tutorial <a href="https://www.python-course.eu/python3_lambda.php" target="_blank" rel="noopener">https://www.python-course.eu/python3_lambda.php</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Python编程 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[集成学习Ensemble和Boosting算法]]></title>
+      <url>/2018/01/08/%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0Ensemble%E5%92%8CBoosting%E7%AE%97%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>在完成<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>后，我们已经使用了分类里最基本的算法</p>
+<ul>
+<li><a href="https://haochen1.github.io/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/" target="_blank" rel="noopener">决策树</a></li>
+<li><a href="https://haochen1.github.io/2018/01/07/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97Random-Forest/" target="_blank" rel="noopener">随机森林</a></li>
+</ul>
+<p>我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>未完待补充。。</p>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspace的时候给样本加了一个权值，使得loss function尽量考虑那些分错类的样本（i.e.分错类的样本weight大）。</p>
+<p>怎么做的呢？</p>
+<ul>
+<li>boosting重采样的不是样本，而是样本的分布，对于分类正确的样本权值低，分类错误的样本权值高（通常是边界附近的样本），最后的分类器是很多弱分类器的线性叠加（加权组合），分类器相当简单。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg"></p>
+<p>下面我们具体来看一下两种常用的boosting算法：Adaboost和Gradient Boosting的具体原理。</p>
+<h2 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h2><p>Adaboost算法在分类问题中的主要特点：<strong>通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类性能。</strong> AdaBoost－算法描述（伪代码）如下：</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg"></p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg"></p>
+<h2 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h2><p>提升树方法是利用加法模型与前向分布算法实现整个优化学习过程。Adaboost的指数损失和回归提升树的平方损失，在前向分布中的每一步都比较简单。但对于一般损失函数而言（比如绝对损失），每一个优化并不容易。</p>
+<p>针对这一问题。Freidman提出了梯度提升（gradient boosting）算法。该算法思想：</p>
+<p><strong>利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中残差的近似值，拟合一个回归树。</strong></p>
+<p>未完待补充。。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. 统计学习方法——CART, Bagging, Random Forest, Boosting <a href="http://blog.csdn.net/abcjennifer/article/details/8164315" target="_blank" rel="noopener">http://blog.csdn.net/abcjennifer/article/details/8164315</a></p>
+<p>[2]. CAML technology sharing platform <a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/" target="_blank" rel="noopener">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 机器学习 </category>
+            
+            <category> 分类问题 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 分类问题 </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[随机森林Random Forest]]></title>
       <url>/2018/01/07/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97Random-Forest/</url>
       <content type="html"><![CDATA[<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>在完成<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>后，我们首先使用了分类里最基本的算法<a href="https://haochen1.github.io/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/" target="_blank" rel="noopener">决策树</a>来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。</p>
