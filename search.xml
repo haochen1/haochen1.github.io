@@ -3,6 +3,38 @@
   
     
     <entry>
+      <title><![CDATA[Hexo中needmoreshare2分享微信无法加载的解决方法]]></title>
+      <url>/2018/01/10/Hexo%E4%B8%ADneedmoreshare2%E5%88%86%E4%BA%AB%E5%BE%AE%E4%BF%A1%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
+      <content type="html"><![CDATA[<p>最近在用hexo建站时，我的一些朋友给我说了无法打开微信分享的问题。我的第一感觉是不是needmoreshare2的微信分享像disqus一样在国内被墙了，后来经过网上查阅资料发现，应该不是墙的问题，而是原来微信生成二维码的api停用了，要企业注册的话需要交钱，我们只是写个人博客的人没这个必要。</p>
+<p>在needmoreshare2的github页面中issue一栏里，发现这是个普遍问题，讨论网址如下<a href="https://github.com/revir/need-more-share2/issues/4。" target="_blank" rel="noopener">https://github.com/revir/need-more-share2/issues/4。</a></p>
+<p>其中，有一位Aqua-Dream网友提供了一种解决方法，思路是用百度云盘生成一个指向博客的二维码，这个服务支持https站点。手机微信扫码后进入博客，点击右上角的分享即可分享到朋友圈。具体解决方法如下：</p>
+<p>修改<code>themes\next\source\lib\needsharebutton\needsharebutton.js</code></p>
+<p>把</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> imgSrc = <span class="string">"https://api.qinco.me/api/qr?size=400&amp;content="</span> + <span class="built_in">encodeURIComponent</span>(myoptions.url);</span><br></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> imgSrc = <span class="string">"https://pan.baidu.com/share/qrcode?w=400&amp;h=400&amp;url="</span> + <span class="built_in">encodeURIComponent</span>(myoptions.url);</span><br></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>我在想可不可以像百度分享一样在二维码旁边加一行字当做使用说明，苦于不懂JavaScript，现在还没想到合适的方法。</p>
+<p>参考文献：</p>
+<p>[1]. Aqua-Dream的博客 <a href="https://aqua.hk.cn/Note/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">https://aqua.hk.cn/Note/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Hexo开发 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Python内置函数lambda,map,reduce,filter]]></title>
       <url>/2018/01/09/Python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0lambda-map-reduce-filter/</url>
       <content type="html"><![CDATA[<p>适当的使用在Python里的4个内置函数lambda, map, reduce, filter可以使程序变得非常简单易读</p>
