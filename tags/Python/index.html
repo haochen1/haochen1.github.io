@@ -535,6 +535,12 @@
     
 
     
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
 
   </div>
 
@@ -624,14 +630,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://haochen1.disqus.com/count.js" async></script>
-    
-
-    
-
-  
-
 
 
 
@@ -644,6 +642,10 @@
   
 
 
+
+
+
+  
 
 
 
@@ -1105,7 +1107,7 @@
     
       pbOptions = {};
       
-          pbOptions.iconStyle = "default";
+          pbOptions.iconStyle = "box";
       
           pbOptions.boxForm = "horizontal";
       
@@ -1115,6 +1117,18 @@
       
       new needShareButton('#needsharebutton-postbottom', pbOptions);
     
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 

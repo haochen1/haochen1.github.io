@@ -391,17 +391,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/03/Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/03/Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -628,12 +617,7 @@ y_test (178,)
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjg1OC85NDE5"></div>
     </div>
 
   
@@ -854,6 +838,12 @@ y_test (178,)
     
 
     
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
 
   </div>
 
@@ -947,26 +937,6 @@ y_test (178,)
 
   
 
-    
-      <script id="dsq-count-scr" src="https://haochen1.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/01/03/Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理/';
-          this.page.identifier = '2018/01/03/Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理/';
-          this.page.title = 'Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://haochen1.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -979,6 +949,21 @@ y_test (178,)
   
 
 
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
 
 
 
@@ -1440,7 +1425,7 @@ y_test (178,)
     
       pbOptions = {};
       
-          pbOptions.iconStyle = "default";
+          pbOptions.iconStyle = "box";
       
           pbOptions.boxForm = "horizontal";
       
@@ -1450,6 +1435,18 @@ y_test (178,)
       
       new needShareButton('#needsharebutton-postbottom', pbOptions);
     
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
     
   </script>
 
