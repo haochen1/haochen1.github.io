@@ -3,6 +3,58 @@
   
     
     <entry>
+      <title><![CDATA[T检验]]></title>
+      <url>/2018/01/22/T%E6%A3%80%E9%AA%8C/</url>
+      <content type="html"><![CDATA[<h1 id="各种检验的来源"><a href="#各种检验的来源" class="headerlink" title="各种检验的来源"></a>各种检验的来源</h1><p>为了确定从样本(sample)统计结果推论至总体时所犯错的概率，我们会利用统计学家所开发的一些统计方法，进行统计检定。</p>
+<p>通过把所得到的统计检定值，与统计学家建立了一些随机变量的概率分布(probability distribution)进行比较，我们可以知道在多少%的机会下会得到目前的结果。倘若经比较后发现，出现这结果的机率很少，亦即是说，是在机会很少、很罕有的情况下才出现；那我们便可以有信心的说，这不是巧合，是具有统计学上的意义的(用统计学的话讲，就是能够拒绝虚无假设null hypothesis,Ho)。相反，若比较后发现，出现的机率很高，并不罕见；那我们便不能很有信心的直指这不是巧合，也许是巧合，也许不是，但我们没能确定。</p>
+<p>F值和t值就是这些统计检定值，与它们相对应的概率分布，就是F分布和t分布。统计显著性（sig）就是出现目前样本这结果的机率。</p>
+<h1 id="统计学意义（P值或sig值）"><a href="#统计学意义（P值或sig值）" class="headerlink" title="统计学意义（P值或sig值）"></a>统计学意义（P值或sig值）</h1><p>结果的统计学意义是结果真实程度（能够代表总体）的一种估计方法。专业上，p值为结果可信程度的一个递减指标，p值越大，我们越不能认为样本中变量的关联是总体中各变量关联的可靠指标。p值是将观察结果认为有效即具有总体代表性的犯错概率。如p=0.05提示样本中变量关联有5%的可能是由于偶然性造成的。即假设总体中任意变量间均无关联，我们重复类似实验，会发现约20个实验中有一个实验，我们所研究的变量关联将等于或强于我们的实验结果。（这并不是说如果变量间存在关联，我们可得到5%或95%次数的相同结果，当总体中的变量存在关联，重复研究和发现关联的可能性与设计的统计学效力有关。）在许多研究领域，0.05的p值通常被认为是可接受错误的边界水平。</p>
+<h1 id="t检验"><a href="#t检验" class="headerlink" title="t检验"></a>t检验</h1><p>T检验，亦称student t检验（Student’s t test），主要用于样本含量较小（例如n&lt;30），总体标准差σ未知的正态分布。</p>
+<h2 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h2><ol>
+<li>已知一个总体均数；</li>
+<li>可得到一个样本均数及该样本标准差；</li>
+<li>样本来自正态或近似正态总体。</li>
+</ol>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>t检验分为单总体检验和双总体检验。</p>
+<p>单总体t检验是检验一个样本平均数与一个已知的总体平均数的差异是否显著。当总体分布是正态分布，如总体标准差未知且样本容量小于30，那么样本平均数与总体平均数的离差统计量呈t分布。</p>
+<p>双总体t检验是检验两个样本平均数与其各自所代表的总体的差异是否显著。双总体t检验又分为两种情况，一是独立样本t检验，一是配对样本t检验。</p>
+<h2 id="t检验步骤"><a href="#t检验步骤" class="headerlink" title="t检验步骤"></a>t检验步骤</h2><p>以单总体t检验为例说明：</p>
+<p>问题：难产儿出生数n=35，体重均值 $\bar x$ =3.42，S =0.40，一般婴儿出生体重μ0=3.30（大规模调查获得），问相同否？</p>
+<p>解：1.建立假设、确定检验水准α</p>
+<p>H0：μ = μ0 （零假设null hypothesis）</p>
+<p>H1：μ ≠ μ0（备择假设alternative hypothesis）</p>
+<p>双侧检验，检验水准：α=0.05</p>
+<p>2.计算检验统计量</p>
+<p><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D68/sign=08ccff2f9616fdfadc6cc5e6b48f3b0e/43a7d933c895d1430268e02778f082025aaf0793.jpg" alt="img"></p>
+<p><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D59/sign=2714b6a0afc27d1ea1263bcd1bd57815/63d0f703918fa0ecfbd160092d9759ee3d6ddba4.jpg" alt="img"></p>
+<p>3.查相应界值表，确定P值，下结论。</p>
+<p>查附表1，t0.025 / 34 = 2.032,t &lt; t0.025 / 34,P &gt;0.05，按α=0.05水准，不拒绝H0，两者的差别无统计学意义</p>
+<p><a href="https://baike.baidu.com/pic/t%E6%A3%80%E9%AA%8C/9910799/0/6c224f4a20a4462381b222549922720e0cf3d788?fr=lemma&amp;ct=single" target="_blank" rel="noopener"><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=3b5e0257f91986184547e8867aed2e69/6c224f4a20a4462381b222549922720e0cf3d788.jpg" alt="img"></a></p>
+<h1 id="F检验"><a href="#F检验" class="headerlink" title="F检验"></a>F检验</h1><p>至於F-检定，方差分析(或译变异数分析，Analysis of Variance)，它的原理大致也是上面说的，但它是透过检视变量的方差而进行的。它主要用于：均数差别的显著性检验、分离各有关因素并估计其对总变异的作用、分析因素间的交互作用、方差齐性(Equality of Variances)检验等情况。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line"></span><br><span class="line">stats.ttest_ind(early[<span class="string">'assignment1_grade'</span>], late[<span class="string">'assignment1_grade'</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&gt;&gt;&gt;Ttest_indResult(statistic=1.400549944897566, pvalue=0.16148283016060577)
+</code></pre><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li><a href="http://blog.sina.com.cn/s/blog_4ee13c2c01016div.html" target="_blank" rel="noopener">一抹新绿的博客</a></li>
+<li><a href="https://baike.baidu.com/item/t%E6%A3%80%E9%AA%8C" target="_blank" rel="noopener">百度百科</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 统计学 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 统计学 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo中needmoreshare2分享微信无法加载的解决方法]]></title>
       <url>/2018/01/10/Hexo%E4%B8%ADneedmoreshare2%E5%88%86%E4%BA%AB%E5%BE%AE%E4%BF%A1%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</url>
       <content type="html"><![CDATA[<p>最近在用hexo建站时，我的一些朋友给我说了无法打开微信分享的问题。我的第一感觉是不是needmoreshare2的微信分享像disqus一样在国内被墙了，后来经过网上查阅资料发现，应该不是墙的问题，而是原来微信生成二维码的api停用了，要企业注册的话需要交钱，我们只是写个人博客的人没这个必要。</p>
@@ -17,7 +69,7 @@
 <p>我在想可不可以像百度分享一样在二维码旁边加一行字当做使用说明，苦于不懂JavaScript，现在还没想到合适的方法。</p>
 <p>参考文献：</p>
 <ol>
-<li>Aqua-Dream的博客 <a href="https://aqua.hk.cn/Note/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">https://aqua.hk.cn/Note/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/</a></li>
+<li><a href="https://aqua.hk.cn/Note/Hexo%E5%8D%9A%E5%AE%A2%E8%B8%A9%E5%9D%91%E7%AC%94%E8%AE%B0/" target="_blank" rel="noopener">Aqua-Dream的博客</a></li>
 </ol>
 ]]></content>
       
