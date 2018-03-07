@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Deep Learning,NLP," />
 
 
 
@@ -79,17 +79,25 @@
 
 
 
-<meta name="description" content="Some personal articles">
+<meta name="description" content="Why sequence modelsExamples of sequence data speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
+<meta name="keywords" content="Deep Learning,NLP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sequence Model week1">
 <meta property="og:url" content="http://yoursite.com/en/2018/03/05/Sequence-Model-week1/index.html">
 <meta property="og:site_name" content="Machine Learning!">
-<meta property="og:description" content="Some personal articles">
+<meta property="og:description" content="Why sequence modelsExamples of sequence data speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-05T19:33:34.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxli3a7huj20qo0f0ajs.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxmfgoxgvj20qo0f0tb5.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxte03cmaj20qo0f0ah7.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxty66rg6j20qo0f0agb.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxu8xx22fj20qo0f0grx.jpg">
+<meta property="og:updated_time" content="2018-03-07T19:42:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sequence Model week1">
-<meta name="twitter:description" content="Some personal articles">
+<meta name="twitter:description" content="Why sequence modelsExamples of sequence data speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg">
 
 
 
@@ -355,6 +363,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/en/categories/Coursera/" itemprop="url" rel="index">
+                    <span itemprop="name">Coursera</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -393,7 +423,146 @@
       
 
       
-        
+        <h1 id="Why-sequence-models"><a href="#Why-sequence-models" class="headerlink" title="Why sequence models"></a>Why sequence models</h1><h2 id="Examples-of-sequence-data"><a href="#Examples-of-sequence-data" class="headerlink" title="Examples of sequence data"></a>Examples of sequence data</h2><ol>
+<li>speech recognition</li>
+<li>Music generation</li>
+<li>Sentiment classification</li>
+<li>DNA sequence analysis</li>
+<li>Machine translation</li>
+<li>Video activity recognition</li>
+<li>Name entity recognition</li>
+</ol>
+<h1 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h1><h2 id="Motivating-example"><a href="#Motivating-example" class="headerlink" title="Motivating example"></a>Motivating example</h2><p>Name entity recognition</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>Harry</th>
+<th>Potter</th>
+<th>and</th>
+<th>Hermione</th>
+<th>Granger</th>
+<th>invented</th>
+<th>a</th>
+<th>new</th>
+<th>spell.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>$$<br>x^{<1>} \to x^{<9>} stand\ for\ the\ 1st\ to\ 9th\ element\ in\ x\ vector, T_x=9\ length=9<br>$$</9></1></p>
+<p>$$<br>y^{<1>} \to y^{<9>} stand\ for\ the\ 1st\ to\ 9th\ element\ in\ y\ vector, T_y=9\ length =9<br>$$</9></1></p>
+<p>$x^{(i)<t>}$ refers to $(i)$th training example’s $<t>$th element.</t></t></p>
+<p>$T_x^{(i)}$ would be the input sequence length for training example i.</p>
+<h2 id="Representing-words"><a href="#Representing-words" class="headerlink" title="Representing words"></a>Representing words</h2><p>To represent words in a sentence, firstly we need a Vocabulary/Dictionary which is a list of the words that you will use in your representations.</p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>aaron</th>
+<th>…</th>
+<th>and</th>
+<th>…</th>
+<th>harry</th>
+<th>…</th>
+<th>potter</th>
+<th>…</th>
+<th>zulu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>…</td>
+<td>367</td>
+<td>…</td>
+<td>4075</td>
+<td>…</td>
+<td>6830</td>
+<td>…</td>
+<td>10000</td>
+</tr>
+</tbody>
+</table>
+<p>Use one-hot encoding<br>$$<br>x^{<1>}=\begin{bmatrix}  0\   \vdots \   0\ 1\leftarrow4075\ 0\   \vdots  \  0   \end{bmatrix};<br>x^{<2>}=\begin{bmatrix}  0\   \vdots \   0\ 1\leftarrow6830\ 0\   \vdots  \  0   \end{bmatrix};<br>x^{<3>}=\begin{bmatrix}  0\   \vdots \   0\ 1\leftarrow367\ 0\   \vdots  \  0   \end{bmatrix};<br>x^{<7>}=\begin{bmatrix}  1\   \vdots \   0\ 0\ 0\   \vdots  \  0   \end{bmatrix}<br>$$<br>When a word can’t be found in the Vocabulary, we shall add $<unk>$ to represent this word.</unk></7></3></2></1></p>
+<h1 id="Recurrent-Neural-Networks"><a href="#Recurrent-Neural-Networks" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h1><h2 id="Why-not-a-standard-network"><a href="#Why-not-a-standard-network" class="headerlink" title="Why not a standard network?"></a>Why not a standard network?</h2><p>Some problems:</p>
+<ul>
+<li>Inputs, outputs can be different lengths in different examples.</li>
+<li>Doesn’t share features learned across different positions of text.</li>
+</ul>
+<h2 id="Recurrent-Neural-Networks-1"><a href="#Recurrent-Neural-Networks-1" class="headerlink" title="Recurrent Neural Networks"></a>Recurrent Neural Networks</h2><p>$y^{<i>}$ not only depends on the current input$x^{<i>}$, but also depends on former inputs $x^{<i-1>} \dots x^{1}$. </i-1></i></i></p>
+<p>Each layer passes an activation function $a^{<i>}$ to next layer $<i+1>$, at the beginning, we will need a $a^{<0>}$ which is usually a vector of zeros.</0></i+1></i></p>
+<h3 id="Uni-direction-vs-Bi-direction"><a href="#Uni-direction-vs-Bi-direction" class="headerlink" title="Uni-direction vs Bi-direction"></a>Uni-direction vs Bi-direction</h3><p>There is a problem for this Uni-diretional RNN:</p>
+<ul>
+<li>The current level output can only consider current and former inputs.</li>
+</ul>
+<p>But sometimes you have to look at following words, for example:</p>
+<ul>
+<li>He said, “Teddy Roosevelt was a great President.”</li>
+<li>He said, “Teddy bears are on sale!”</li>
+</ul>
+<p>In this case, the first three words are same, in order to figure out what “Teddy” exactely refers to, you should take the following words like “Roosevelt” or “bears” into considerations. So, there comes a RNN model that considers both former and following words, which is called Bidirectional RNN(BRNN).</p>
+<h2 id="Forward-Propagation"><a href="#Forward-Propagation" class="headerlink" title="Forward Propagation"></a>Forward Propagation</h2><p>At the ever beginning<br>$$<br>a^{<0>}=\vec{0}<br>$$<br>For the first level<br>$$<br>a^{<1>}=g<em>1(w</em>{aa}a^{<0>}+w_{ax}x^{<1>}+b_a)\leftarrow \underline{tanh}\ or\  ReLU\<br>\hat y^{<1>}=g<em>2(w</em>{ya}a^{<1>}+b_y)\leftarrow\ sigmoid<br>$$<br>More generally<br>$$<br>a^{<t>}=g<em>1(w</em>{aa}a^{<t-1>}+w_{ax}x^{<t>}+b_a)\leftarrow \underline{tanh}\ or\  ReLU\<br>\hat y^{<t>}=g<em>2(w</em>{ya}a^{<t>}+b_y)\leftarrow\ sigmoid<br>$$</t></t></t></t-1></t></1></1></1></0></1></0></p>
+<h3 id="Simplified-RNN-notation"><a href="#Simplified-RNN-notation" class="headerlink" title="Simplified RNN notation"></a>Simplified RNN notation</h3><p>You can write the above formula like:<br>$$<br>a^{<t>}=g<em>1(w</em>{a}\binom{a^{<t-1>}}{x{<t>}}+b<em>a) \<br>[w</em>{aa}\ w_{ax}]=w_a<br>$$</t></t-1></t></p>
+<h2 id="Backpropagation-through-time"><a href="#Backpropagation-through-time" class="headerlink" title="Backpropagation through time"></a>Backpropagation through time</h2><p>Usually, a DL framework can automatically take care of backpropagation. </p>
+<p>Defining a loss function to finish the backpropogation.</p>
+<h1 id="Different-types-of-RNNs"><a href="#Different-types-of-RNNs" class="headerlink" title="Different types of RNNs"></a>Different types of RNNs</h1><p>When we have length of input equals to length of output, it’s called: <strong>Many-to-many architecture</strong>: $T_x=T_y$.</p>
+<p>By contrast, for a sentiment classification problem,$x=text\ ;\ y=0/1 \ or 1..5 $, rather than using every input to have an output, you can just let RNN read the whole sentence and get an output at the last step. This model is called <strong>Many-to-one architecture</strong>.</p>
+<p>There is also <strong>one-to-one architecture</strong>, which is maybe less interesting.</p>
+<p>In the end, you can have <strong>one-to-many architecture</strong> that can be used for music generation. You provide an integer as the gender of music or as a first key, you get a chapiter of music.</p>
+<p>Another example is Machine translation, it’s another version of many-to-many architecture, but there are two distinguishable parts: “encoder”(pure inputs) and “decoder”(pure outputs).</p>
+<h1 id="Languages-model-and-sequence-generation"><a href="#Languages-model-and-sequence-generation" class="headerlink" title="Languages model and sequence generation"></a>Languages model and sequence generation</h1><h2 id="Speech-recognition"><a href="#Speech-recognition" class="headerlink" title="Speech recognition"></a>Speech recognition</h2><p>For example, when I say</p>
+<blockquote>
+<p>The apple and pear salad were delicious.</p>
+</blockquote>
+<p>even for those best speech recognition systems, it’s hard to figure out</p>
+<ol>
+<li>The apple and pair salad</li>
+<li>The apple and pear salad</li>
+</ol>
+<p>A speech recognition system could give a probability to each sentence. If the second one has a higher probability, it will be chosen.</p>
+<h2 id="language-modelling-with-an-RNN"><a href="#language-modelling-with-an-RNN" class="headerlink" title="language modelling with an RNN"></a>language modelling with an RNN</h2><p><strong>Trainng set</strong>: large corpus of english text.</p>
+<p>You need firstly <strong>tokenize</strong> the text.</p>
+<p>Cats average 15 hours of sleep a day. EOS =&gt; $y^{<1>}\ y^{<2>}\ y^{<3>}\ … y^{<9>}$$$<eos>= end\ of\ sentence$$</eos></9></3></2></1></p>
+<p>The Egyptian Mau is a bread of cat. The special word Mau=&gt;$<unk>=Unknown$</unk></p>
+<h2 id="RNN-model"><a href="#RNN-model" class="headerlink" title="RNN model"></a>RNN model</h2><p>At each step of a RNN network, the output should be a probability of all words in a dictionary given last words.</p>
+<p>To train this network, the loss function at step t could be $L(\hat{y}^{<t>},y^{<t>})=-\sum{y_i^{<t>}log\hat{y}_i^{<t>}}$. The overall loss is $L=\sum{L^{<t>}(\hat{y}^{<t>},y^{<t>})}$. </t></t></t></t></t></t></t></p>
+<p>With thismodel, we can predict the next word given a set of words.<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg" alt=""></p>
+<h1 id="Sampling-novel-sequences"><a href="#Sampling-novel-sequences" class="headerlink" title="Sampling novel sequences"></a>Sampling novel sequences</h1><h2 id="Sampling-a-sequence-from-a-trained-RNN"><a href="#Sampling-a-sequence-from-a-trained-RNN" class="headerlink" title="Sampling a sequence from a trained RNN"></a>Sampling a sequence from a trained RNN</h2><h3 id="Word-level-language-model"><a href="#Word-level-language-model" class="headerlink" title="Word-level language model"></a>Word-level language model</h3><p>Use words as inputs to train RNN models</p>
+<h3 id="Character-level-language-model"><a href="#Character-level-language-model" class="headerlink" title="Character-level language model"></a>Character-level language model</h3><p>Use characters as inputs to train RNN models<br>pros:</p>
+<ul>
+<li>Don’t have to worry about UNK<br>cons:</li>
+<li>you end up with much longer sequences, 10-20 words equal 100-200 characters, so it’s harder to capture dependencies from former characters</li>
+<li>more computationally expensive to train</li>
+</ul>
+<h1 id="Vanishing-gradients-with-RNNs"><a href="#Vanishing-gradients-with-RNNs" class="headerlink" title="Vanishing gradients with RNNs"></a>Vanishing gradients with RNNs</h1><p>Just like deep neural networks, it can be quite difficult to let the later time steps affect the earlier computations. But for RNNs, it’s possible to have both vanishing and exploding gradients.</p>
+<p>A possible solution for exploding gradients is to apply gradient clipping, which means looking at your gradient vector, if it’s bigger than some thresholds, resize these gradient vectors.</p>
+<h1 id="Gated-Recurrent-Unit-GRU"><a href="#Gated-Recurrent-Unit-GRU" class="headerlink" title="Gated Recurrent Unit(GRU)"></a>Gated Recurrent Unit(GRU)</h1><p>GRU is a possible solution to vanishing gradients.</p>
+<h2 id="GRU-simplified"><a href="#GRU-simplified" class="headerlink" title="GRU(simplified)"></a>GRU(simplified)</h2><p>For example, there is a sentence “The cat, which already ate… , was full “, you have to memorize it’s “cat” or “cats” to decide “was” or “were”.<br>$$c=memory\ cell$$<br>$$c^{<t>}=a^{<t>}$$<br>Then there is a candidate for replacing the memory cell:<br>$$\tilde{c}^{<t>}=tanh(w_c[c^{<t-1>},x^{<t>}]+b_c)$$<br>$$\Gamma_u=\sigma(w_u[c^{<t-1>},x^{<t>}]+b_u), u=update$$<br>The $\Gamma_u$ should be 1 at the word “cat”, 0 at other words.</t></t-1></t></t-1></t></t></t></p>
+<p>For a sigmoid function, the result is a number between 0 and 1, and most time it’s either 0 or 1. So it’s called <strong>Gate</strong>. </p>
+<p>Then use the following function to update memory cells:<br>$$c^{<t>}=\Gamma_u<em>\tilde{c}^{<t>}+(1-\Gamma_u)</t></em>c^{<t-1>}$$</t-1></t></p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxli3a7huj20qo0f0ajs.jpg" alt=""></p>
+<h2 id="Full-GRU"><a href="#Full-GRU" class="headerlink" title="Full GRU"></a>Full GRU</h2><p>In the full version GRU, we add a new gate $\Gamma_r$ in the candidate function, r stands for relevance. The main structure keeps unchanged.<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxmfgoxgvj20qo0f0tb5.jpg" alt=""></p>
+<h1 id="Long-Short-term-Memory-LSTM"><a href="#Long-Short-term-Memory-LSTM" class="headerlink" title="Long Short term Memory(LSTM)"></a>Long Short term Memory(LSTM)</h1><p>Another solution, maybe even more powerful than GRU in some cases, is LSTM. Instead of using two gates, an update, a forget gate and an output gate are used in LSTM.<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxte03cmaj20qo0f0ah7.jpg" alt=""><br>At each time step, we use those three gates to update memory cells. </p>
+<p>LSTM came out earlier than GRU, but in different cases, they could have different performances.</p>
+<h1 id="Bidirectional-RNN"><a href="#Bidirectional-RNN" class="headerlink" title="Bidirectional RNN"></a>Bidirectional RNN</h1><p>In the previous models, there are only forwards connections, but in BRNN, there will be also backwards connections.<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxty66rg6j20qo0f0agb.jpg" alt=""><br>A Bidirectional structure with LSTM blocks is a first thing to try for recent NLP problems.</p>
+<h1 id="Deep-RNNs"><a href="#Deep-RNNs" class="headerlink" title="Deep RNNs"></a>Deep RNNs</h1><p>In a deep RNN, we shall use a chained blocks as a layer. So to compute a block, both horizontal and vertical inputs are needed. Like $a^{[2]<3>}=g(w_a^{[2]}[a^{[2]<2>},a^{[1]<3>}]+b_a^{[3]})$<br><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxu8xx22fj20qo0f0grx.jpg" alt=""></3></2></3></p>
+<p>Usually there aren’t many horizontal layers, but we add some vertical connections at the last layer outputs.</p>
+
       
     </div>
     
@@ -407,6 +576,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/en/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/en/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
       
 
       
@@ -481,8 +658,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,7 +694,25 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/en/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/en/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -556,6 +760,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-sequence-models"><span class="nav-number">1.</span> <span class="nav-text">Why sequence models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Examples-of-sequence-data"><span class="nav-number">1.1.</span> <span class="nav-text">Examples of sequence data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Notation"><span class="nav-number">2.</span> <span class="nav-text">Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivating-example"><span class="nav-number">2.1.</span> <span class="nav-text">Motivating example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Representing-words"><span class="nav-number">2.2.</span> <span class="nav-text">Representing words</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Recurrent-Neural-Networks"><span class="nav-number">3.</span> <span class="nav-text">Recurrent Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-not-a-standard-network"><span class="nav-number">3.1.</span> <span class="nav-text">Why not a standard network?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recurrent-Neural-Networks-1"><span class="nav-number">3.2.</span> <span class="nav-text">Recurrent Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Uni-direction-vs-Bi-direction"><span class="nav-number">3.2.1.</span> <span class="nav-text">Uni-direction vs Bi-direction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Forward-Propagation"><span class="nav-number">3.3.</span> <span class="nav-text">Forward Propagation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Simplified-RNN-notation"><span class="nav-number">3.3.1.</span> <span class="nav-text">Simplified RNN notation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-through-time"><span class="nav-number">3.4.</span> <span class="nav-text">Backpropagation through time</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Different-types-of-RNNs"><span class="nav-number">4.</span> <span class="nav-text">Different types of RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Languages-model-and-sequence-generation"><span class="nav-number">5.</span> <span class="nav-text">Languages model and sequence generation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Speech-recognition"><span class="nav-number">5.1.</span> <span class="nav-text">Speech recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#language-modelling-with-an-RNN"><span class="nav-number">5.2.</span> <span class="nav-text">language modelling with an RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RNN-model"><span class="nav-number">5.3.</span> <span class="nav-text">RNN model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sampling-novel-sequences"><span class="nav-number">6.</span> <span class="nav-text">Sampling novel sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sampling-a-sequence-from-a-trained-RNN"><span class="nav-number">6.1.</span> <span class="nav-text">Sampling a sequence from a trained RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Word-level-language-model"><span class="nav-number">6.1.1.</span> <span class="nav-text">Word-level language model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Character-level-language-model"><span class="nav-number">6.1.2.</span> <span class="nav-text">Character-level language model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vanishing-gradients-with-RNNs"><span class="nav-number">7.</span> <span class="nav-text">Vanishing gradients with RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gated-Recurrent-Unit-GRU"><span class="nav-number">8.</span> <span class="nav-text">Gated Recurrent Unit(GRU)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GRU-simplified"><span class="nav-number">8.1.</span> <span class="nav-text">GRU(simplified)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Full-GRU"><span class="nav-number">8.2.</span> <span class="nav-text">Full GRU</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Long-Short-term-Memory-LSTM"><span class="nav-number">9.</span> <span class="nav-text">Long Short term Memory(LSTM)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bidirectional-RNN"><span class="nav-number">10.</span> <span class="nav-text">Bidirectional RNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Deep-RNNs"><span class="nav-number">11.</span> <span class="nav-text">Deep RNNs</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
