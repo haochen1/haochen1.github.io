@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
+<meta name="description" content="代码 在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rand">
 <meta name="keywords" content="分类问题,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随机森林Random Forest">
 <meta property="og:url" content="http://yoursite.com/2018/01/07/随机森林Random-Forest/index.html">
 <meta property="og:site_name" content="机器学习之路">
-<meta property="og:description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
+<meta property="og:description" content="代码 在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rand">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg">
 <meta property="og:updated_time" content="2018-01-07T22:28:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机森林Random Forest">
-<meta name="twitter:description" content="代码在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rando">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg">
+<meta name="twitter:description" content="代码 在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们首先使用了分类里最基本的算法决策树来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。 12345# 载入准确度检验函数shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, rand">
 
 
 
@@ -429,24 +427,29 @@
       
 
       
-        <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>在完成<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>后，我们首先使用了分类里最基本的算法<a href="https://haochen1.github.io/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/" target="_blank" rel="noopener">决策树</a>来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 载入准确度检验函数</span></span><br><span class="line">shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=<span class="number">20</span>, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_classifier</span><span class="params">(clf)</span>:</span></span><br><span class="line">    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)</span><br><span class="line">    print(<span class="string">"Accuracy: %0.4f (+/- %0.2f)"</span> % (scores.mean(), scores.std()))</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.ensemble <span class="keyword">as</span> ske</span><br><span class="line"><span class="comment"># Random forest </span></span><br><span class="line">clf_rf = ske.RandomForestClassifier(n_estimators=<span class="number">100</span>)</span><br><span class="line">clf_rf.fit (X_train, y_train)</span><br><span class="line">test_classifier(clf_rf)</span><br></pre></td></tr></table></figure>
+        <h1>代码</h1>
+<p>在完成<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>后，我们首先使用了分类里最基本的算法<a href="https://haochen1.github.io/2018/01/05/%E5%86%B3%E7%AD%96%E6%A0%91Decision-Tree/" target="_blank" rel="noopener">决策树</a>来完成第一个分类模型，现在来看下一个模型随机森林Random Forest。</p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 载入准确度检验函数</span></span><br><span class="line">shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=<span class="number">20</span>, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_classifier</span><span class="params">(clf)</span>:</span></span><br><span class="line">    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)</span><br><span class="line">    print(<span class="string">"Accuracy: %0.4f (+/- %0.2f)"</span> % (scores.mean(), scores.std()))</span><br></pre></td></tr></table></figure></p>
+<p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sklearn.ensemble <span class="keyword">as</span> ske</span><br><span class="line"><span class="comment"># Random forest </span></span><br><span class="line">clf_rf = ske.RandomForestClassifier(n_estimators=<span class="number">100</span>)</span><br><span class="line">clf_rf.fit (X_train, y_train)</span><br><span class="line">test_classifier(clf_rf)</span><br></pre></td></tr></table></figure></p>
 <pre><code>Accuracy: 0.8101 (+/- 0.03)
-</code></pre><p>和上篇类似，如果只对代码感兴趣，可以在此停住。下面会是一些原理部分。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>classification tree非常简单，但是经常会有noisy classifiers. 于是引入ensemble classifiers: bagging, random forest（决策树和bagging的结合）, 和boosting。</p>
+</code></pre>
+<p>和上篇类似，如果只对代码感兴趣，可以在此停住。下面会是一些原理部分。</p>
+<h1>原理</h1>
+<p>classification tree非常简单，但是经常会有noisy classifiers. 于是引入ensemble classifiers: bagging, random forest（决策树和bagging的结合）, 和boosting。</p>
 <p>一般的，用团体学习会比不用的算法准确度高， Boosting &gt; Bagging &gt; Classification tree(single tree)。</p>
-<h2 id="Bagging装袋算法"><a href="#Bagging装袋算法" class="headerlink" title="Bagging装袋算法"></a>Bagging装袋算法</h2><p>Bagging算法 （英语：Bootstrap aggregating，引导聚集算法），又称装袋算法，是机器学习领域的一种团体学习ensemble算法。最初由Leo Breiman于1994年提出。 Bagging算法可与其他分类、回归算法结合，提高其准确率、稳定性的同时，通过降低结果的方差，避免过拟合的发生。</p>
+<h2>Bagging装袋算法</h2>
+<p>Bagging算法 （英语：Bootstrap aggregating，引导聚集算法），又称装袋算法，是机器学习领域的一种团体学习ensemble算法。最初由Leo Breiman于1994年提出。 Bagging算法可与其他分类、回归算法结合，提高其准确率、稳定性的同时，通过降低结果的方差，避免过拟合的发生。</p>
 <p>Bagging的策略：</p>
 <ul>
 <li>从样本集中用Bootstrap采样选出n个样本</li>
-<li>在所有属性上，对这n个样本建立分类器（CART or SVM or …）</li>
-<li>重复以上两步m次，i.e.build m个分类器（CART or SVM or …）</li>
+<li>在所有属性上，对这n个样本建立分类器（CART or SVM or ...）</li>
+<li>重复以上两步m次，i.e.build m个分类器（CART or SVM or ...）</li>
 <li>将数据放在这m个分类器上跑，最后vote看到底分到哪一类</li>
 </ul>
 <p>下图是Bagging的选择策略，每次从N个数据中采样n次得到n个数据的一个bag，总共选择B次得到B个bags，也就是B个bootstrap samples.</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg"></p>
-<h2 id="Random-forest随机森林"><a href="#Random-forest随机森林" class="headerlink" title="Random forest随机森林"></a>Random forest随机森林</h2><p>随机森林在bagging基础上做了修改。</p>
+<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg&quot;/&gt;</p>
+<h2>Random forest随机森林</h2>
+<p>随机森林在bagging基础上做了修改。</p>
 <ul>
 <li>从样本集中用Bootstrap采样选出n个样本，预建立CART</li>
 </ul>
@@ -461,10 +464,11 @@
 </ul>
 <p>这里的random就是指</p>
 <ol>
-<li>Bootstrap中的随机选择子样本   </li>
+<li>Bootstrap中的随机选择子样本</li>
 <li>Random subspace的算法从属性集中随机选择k个属性，每个树节点分裂时，从这随机的k个属性，选择最优的</li>
 </ol>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1].统计学习方法——CART, Bagging, Random Forest, Boosting <a href="http://blog.csdn.net/abcjennifer/article/details/8164315" target="_blank" rel="noopener">http://blog.csdn.net/abcjennifer/article/details/8164315</a></p>
+<h1>参考文献</h1>
+<p>[1].统计学习方法——CART, Bagging, Random Forest, Boosting http://blog.csdn.net/abcjennifer/article/details/8164315</p>
 
       
     </div>
@@ -693,7 +697,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bagging装袋算法"><span class="nav-number">2.1.</span> <span class="nav-text">Bagging装袋算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-forest随机森林"><span class="nav-number">2.2.</span> <span class="nav-text">Random forest随机森林</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Bagging装袋算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Random forest随机森林</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -804,6 +808,8 @@
   
 
 
+  
+
 
 
 
@@ -842,6 +848,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1410,7 +1421,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码未完待补充。。 原理首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspac">
+<meta name="description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码 未完待补充。。 原理 首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hypersp">
 <meta name="keywords" content="分类问题,算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="集成学习Ensemble和Boosting算法">
 <meta property="og:url" content="http://yoursite.com/2018/01/08/集成学习Ensemble和Boosting算法/index.html">
 <meta property="og:site_name" content="机器学习之路">
-<meta property="og:description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码未完待补充。。 原理首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspac">
+<meta property="og:description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码 未完待补充。。 原理 首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hypersp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg">
 <meta property="og:updated_time" content="2018-01-09T00:05:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集成学习Ensemble和Boosting算法">
-<meta name="twitter:description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码未完待补充。。 原理首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspac">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg">
+<meta name="twitter:description" content="在完成Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理后，我们已经使用了分类里最基本的算法  决策树 随机森林  我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。 代码 未完待补充。。 原理 首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hypersp">
 
 
 
@@ -437,23 +433,28 @@
 <li><a href="https://haochen1.github.io/2018/01/07/%E9%9A%8F%E6%9C%BA%E6%A3%AE%E6%9E%97Random-Forest/" target="_blank" rel="noopener">随机森林</a></li>
 </ul>
 <p>我们既然已经由随机森林接触到集成学习Ensemble中的bagging算法，现在我们进一步来看集成学习中另一大类boosting算法。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>未完待补充。。</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspace的时候给样本加了一个权值，使得loss function尽量考虑那些分错类的样本（i.e.分错类的样本weight大）。</p>
+<h1>代码</h1>
+<p>未完待补充。。</p>
+<h1>原理</h1>
+<p>首先给个大致的概念，同为ensemble算法，boosting和bagging的最大区别在于选择hyperspace的时候给样本加了一个权值，使得loss function尽量考虑那些分错类的样本（i.e.分错类的样本weight大）。</p>
 <p>怎么做的呢？</p>
 <ul>
 <li>boosting重采样的不是样本，而是样本的分布，对于分类正确的样本权值低，分类错误的样本权值高（通常是边界附近的样本），最后的分类器是很多弱分类器的线性叠加（加权组合），分类器相当简单。</li>
 </ul>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg"></p>
+<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg&quot;/&gt;</p>
 <p>下面我们具体来看一下两种常用的boosting算法：Adaboost和Gradient Boosting的具体原理。</p>
-<h2 id="Adaboost"><a href="#Adaboost" class="headerlink" title="Adaboost"></a>Adaboost</h2><p>Adaboost算法在分类问题中的主要特点：<strong>通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类性能。</strong> AdaBoost－算法描述（伪代码）如下：</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg"></p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg"></p>
-<h2 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h2><p>提升树方法是利用加法模型与前向分布算法实现整个优化学习过程。Adaboost的指数损失和回归提升树的平方损失，在前向分布中的每一步都比较简单。但对于一般损失函数而言（比如绝对损失），每一个优化并不容易。</p>
+<h2>Adaboost</h2>
+<p>Adaboost算法在分类问题中的主要特点：<strong>通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类性能。</strong> AdaBoost－算法描述（伪代码）如下：</p>
+<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg&quot;/&gt;</p>
+<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg&quot;/&gt;</p>
+<h2>Gradient Boosting</h2>
+<p>提升树方法是利用加法模型与前向分布算法实现整个优化学习过程。Adaboost的指数损失和回归提升树的平方损失，在前向分布中的每一步都比较简单。但对于一般损失函数而言（比如绝对损失），每一个优化并不容易。</p>
 <p>针对这一问题。Freidman提出了梯度提升（gradient boosting）算法。该算法思想：</p>
 <p><strong>利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中残差的近似值，拟合一个回归树。</strong></p>
 <p>未完待补充。。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]. 统计学习方法——CART, Bagging, Random Forest, Boosting <a href="http://blog.csdn.net/abcjennifer/article/details/8164315" target="_blank" rel="noopener">http://blog.csdn.net/abcjennifer/article/details/8164315</a></p>
-<p>[2]. CAML technology sharing platform <a href="http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/" target="_blank" rel="noopener">http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</a></p>
+<h1>参考文献</h1>
+<p>[1]. 统计学习方法——CART, Bagging, Random Forest, Boosting http://blog.csdn.net/abcjennifer/article/details/8164315</p>
+<p>[2]. CAML technology sharing platform http://www.52caml.com/head_first_ml/ml-chapter6-boosting-family/</p>
 
       
     </div>
@@ -682,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Adaboost"><span class="nav-number">2.1.</span> <span class="nav-text">Adaboost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Boosting"><span class="nav-number">2.2.</span> <span class="nav-text">Gradient Boosting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Adaboost</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Gradient Boosting</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
@@ -793,6 +794,8 @@
   
 
 
+  
+
 
 
 
@@ -831,6 +834,11 @@
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -1399,7 +1407,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
