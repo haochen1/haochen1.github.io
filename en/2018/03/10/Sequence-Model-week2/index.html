@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Deep Learning,NLP," />
 
 
 
@@ -79,16 +79,36 @@
 
 
 
-<meta name="description" content="Some personal articles">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Machine Learning!">
-<meta property="og:url" content="http://yoursite.com/en/archives/index.html">
+<meta name="description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
+<meta name="keywords" content="Deep Learning,NLP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sequence Model week2">
+<meta property="og:url" content="http://yoursite.com/en/2018/03/10/Sequence-Model-week2/index.html">
 <meta property="og:site_name" content="Machine Learning!">
-<meta property="og:description" content="Some personal articles">
+<meta property="og:description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3eyj4vo1j20qo0f0q7y.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h09qz12j20qo0f0dm3.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h5mkc70j20qo0f0n1d.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hp1pirjj20qo0f0adr.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hytdamvj20qo0f0wkm.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4l154hc6j20qo0f0grx.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4osyx745j20qo0f078i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4qxi3hxvj20qo0f0dkw.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4r8vaxjsj20qo0f0jw0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4rb9bz9qj20qo0f0goi.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5k889htuj20qo0f077t.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5ki84tauj20qo0f0q68.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5liyzosxj20qo0f0q7i.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5llahpgvj20qo0f0whs.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5pnb2omxj20qo0f0wjg.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fp5rtzo750j20qo0f00yd.jpg">
+<meta property="og:updated_time" content="2018-03-13T19:15:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning!">
-<meta name="twitter:description" content="Some personal articles">
+<meta name="twitter:title" content="Sequence Model week2">
+<meta name="twitter:description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg">
 
 
 
@@ -118,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/en/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/en/2018/03/10/Sequence-Model-week2/"/>
 
 
 
 
 
-  <title>Archive | Machine Learning!</title>
+  <title>Sequence Model week2 | Machine Learning!</title>
   
 
 
@@ -152,7 +172,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -300,111 +320,262 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/en/2018/03/10/Sequence-Model-week2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hao Chen">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/en/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Machine Learning!">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Sequence Model week2</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-10T20:12:49+01:00">
+                2018-03-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 2 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/en/categories/Coursera/" itemprop="url" rel="index">
+                    <span itemprop="name">Coursera</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/en/2018/03/10/Sequence-Model-week2/" class="leancloud_visitors" data-flag-title="Sequence Model week2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1>Introduction to Word Embeddings</h1>
+<h2>Word Representation</h2>
+<h3>One-hot representation</h3>
+<p>So far, we have used a vocabulary and one-hot representation
+$$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\ 0 \end{bmatrix}=O_{5391}$$
+$$Woman(9853)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\ 0 \end{bmatrix}=O_{9853}$$
+It's hard to recognize the relationship between 2 vectors, because inner product of any 2 one-hot vectors is 0.</p>
+<h3>Featurized representation: word embedding</h3>
+<p>Instead of using one-hot encoding, to represent a word, you can choose some features like Gender, Royal, Age, Food .. Size, Cost.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg" alt=""></p>
+<p>##Using word embeddings
+Using transfer learning and word embeddings can be a good approach to slove NLP problems.</p>
+<p>Here are the 3 steps that you need to do when considering this approach.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3eyj4vo1j20qo0f0q7y.jpg" alt=""></p>
+<h2>Properties of word embeddings</h2>
+<p>One interesting property is if we take two vectors like $e_{man}$ and $e_{woman}$, $e_{man}-e_{woman}$ can give the main difference between 2 vectors.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h09qz12j20qo0f0dm3.jpg" alt="">
+To put this into an algorithm, for example, if you want to find what is the corresponding word of &quot;king&quot; in the way like &quot;man&quot; and &quot;woman&quot;, we need to calculate the similarity.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h5mkc70j20qo0f0n1d.jpg" alt="">
+Two similarity calculation methods:</p>
+<ol>
+<li>** Cosine similarity **</li>
+<li>** Euclidian distance **
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hp1pirjj20qo0f0adr.jpg" alt=""></li>
+</ol>
+<h2>Embedding Matrix</h2>
+<p>You can put all Use an embeddinng matrix and one-hot vector can get an embedding vector easily.</p>
+<p>But in practice, use special function to look up an embedding.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hytdamvj20qo0f0wkm.jpg" alt=""></p>
+<h1>Learning Word Embedddings: Word2vec &amp; GloVe</h1>
+<h2>Learning word embedddings</h2>
+<p>A learning model can be like: word embedding =&gt; neural network with parameters $w^{[1]}$ and $b^{[1]}$ =&gt; softmax with parameters $w^{[2]}$ and $b^{[2]}$</p>
+<p>A common algorithm for learning the matrix E looks like the following image, we want to predict the target word &quot;juice&quot; using context words&quot;a glass of orange&quot;.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4l154hc6j20qo0f0grx.jpg" alt="">
+Context can vary from last few words to next few words or both. Pairs of context/target are import</p>
+<h2>Word2Vec Skip-gram model</h2>
+<p>Word2Vec is a simple way to learn word embeddings.</p>
+<p>When apply Skip-grams for context/target selection, we randomly pick up words in a window as context/target.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4osyx745j20qo0f078i.jpg" alt=""></p>
+<p>A problem with softmax classification, every time you need a propobility of a target word, you calculate a sum whose length equals to that of vocabulary. When you have many words in the vocabulary, it can be very slow.</p>
+<p>So instead of using softmax classification, hierarchical softmax can be a more proper way. You can use a tree to figure out that a word locates in which part of a vocabulary.</p>
+<p>For instance, the target can be chosen within a windows of -10/10 words. But choosing a context can be more tricky, you should avoid using frequent non-sense words like &quot;the&quot; &quot;and&quot; &quot;to&quot; &quot;a&quot;.</p>
+<p>A even simpler solution to this problem is Negative Sampling.</p>
+<h2>Negative Sampling</h2>
+<p>We create a supervised problem, given pairs of context/target as x, y should matching results in 0/1. To form a dataset, 5-20 pairs for small datasets and 2-5 pairs for larger datasets.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4qxi3hxvj20qo0f0dkw.jpg" alt=""></p>
+<p>We only train the model with 1 correct pair and 4 other incorrect pairs.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4r8vaxjsj20qo0f0jw0.jpg" alt=""></p>
+<p>To select negative samples, the authur proposed a way:
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4rb9bz9qj20qo0f0goi.jpg" alt=""></p>
+<h2>GloVe word vectors</h2>
+<p>We define pairs of context/target in the following way:
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5k889htuj20qo0f077t.jpg" alt=""></p>
+<p>The model looks like:
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5ki84tauj20qo0f0q68.jpg" alt="">
+You can't guarantee that an axis is well aligned to a feature.</p>
+<p>#Allications using Word Embeddings</p>
+<h2>Sentiment Classification</h2>
+<p>A simple sentiment classification model takes the average of each word embedding vector.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5liyzosxj20qo0f0q7i.jpg" alt=""></p>
+<p>Use a RNN can avoid disadvantages of some special sentences.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5llahpgvj20qo0f0whs.jpg" alt=""></p>
+<h2>Debiasing word embeddings</h2>
+<p>What is bias in word embedding?
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5pnb2omxj20qo0f0wjg.jpg" alt="">
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fp5rtzo750j20qo0f00yd.jpg" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/en/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+          
+            <a href="/en/tags/NLP/" rel="tag"># NLP</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
         
-        
+
         
 
         
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
           </div>
         
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/en/2018/03/10/Sequence-Model-week2/" itemprop="url">
-              
-                <span itemprop="name">Sequence Model week2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-10T20:12:49+01:00"
-              content="2018-03-10" >
-          03-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
+      
       
 
-        
-        
-        
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/en/2018/03/05/Sequence-Model-week1/" rel="next" title="Sequence Model week1">
+                <i class="fa fa-chevron-left"></i> Sequence Model week1
+              </a>
+            
+          </div>
 
-        
-        
+          <span class="post-nav-divider"></span>
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/en/2018/03/05/Sequence-Model-week1/" itemprop="url">
-              
-                <span itemprop="name">Sequence Model week1</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-05T20:12:49+01:00"
-              content="2018-03-05" >
-          03-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
-    </div>
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -412,6 +583,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMjg1OC85NDE5"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -432,8 +612,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,6 +714,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Word Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">One-hot representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">Featurized representation: word embedding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Properties of word embeddings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Embedding Matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Learning Word Embedddings: Word2vec &amp; GloVe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Learning word embedddings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Word2Vec Skip-gram model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Negative Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">GloVe word vectors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">Sentiment Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">Debiasing word embeddings</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -691,6 +896,10 @@
   
 
   
+  <script type="text/javascript" src="/en/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/en/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -719,6 +928,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
