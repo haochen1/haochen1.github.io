@@ -3,6 +3,91 @@
   
     
     <entry>
+      <title><![CDATA[Sequence Model week3]]></title>
+      <url>/en/2018/03/15/Sequence-Model-week3/</url>
+      <content type="html"><![CDATA[<h1>Various sequence to sequence qrchitectures</h1>
+<h2>Basic Models</h2>
+<h3>Machine translation</h3>
+<p>For a machine tanslation, you need a encoder-decoder model. In this model, each block can represent a RNN/LSTM/GRU.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbj7k98blj20qo0f0gq5.jpg" alt=""></p>
+<h3>Image captioning</h3>
+<p>How to interpret an image into a caption? In the example, we use a pre-trainde Alex network as encoders. Then we also need sevaral RNN blocks as decoders.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbjl2nlhpj20qo0f0dmd.jpg" alt=""></p>
+<h2>Picking the most likely sentence</h2>
+<p>A machine translation problem can be regarded as a conditional language model, and &quot;conditional&quot; means given the probability of the original sentence.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbkgx0oo6j20qo0f0gr4.jpg" alt=""></p>
+<p>###Why not a greedy search?
+<strong>greedy search:</strong> find the most likely word for the position 1, then for the position 2, etc..
+It doesn't work well when we need to translate a whole sentence.</p>
+<h2>Beam Search</h2>
+<h3>step 1</h3>
+<p>B=3 means that 3 most likely words are chosen.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpblyt59uwj20qo0f0ad0.jpg" alt=""></p>
+<h3>step 2</h3>
+<p>For each candidate word chosen in step 1, run RNN blocks to find out the most likely pairs of $y^{&lt;1&gt;},y^{&lt;2&gt;}$, then cut down these 30000 possibilities into 3 most possible.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbmkcxpj0j20qo0f0gv4.jpg" alt=""></p>
+<h3>step 3</h3>
+<p>Same pocesse like step 2.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbml4fkw6j20qo0f0jw6.jpg" alt=""></p>
+<h2>Refinements to Beam Search</h2>
+<h3>Length normalization</h3>
+<p>$P(y^{&lt;1&gt;}...y^{&lt;T_y&gt;}|x)$ can be thought as a product of many conditional probabilities, which can be too small.</p>
+<p>The result of model tends to be short sentences, because the product of probability of short sentence is likely to be bigger.</p>
+<p>To avoid this disadvantage, one approach is dividing this product by number of words in the sentence.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fpcwk14z1lj20qo0f0wjq.jpg" alt=""></p>
+<h3>Beam search discussion</h3>
+<p>Beam width B is a compromise of performance and speed.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpcwmzdh8tj20qo0f0gpn.jpg" alt=""></p>
+<h2>Error analysis in beam search</h2>
+<p>When there is an error, we want to be clear this error comes from RNN or beam search.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdsgsmf59j20qo0f0tez.jpg" alt=""></p>
+<h2>Blue Score</h2>
+<p>There may be several possible translation for a sentence.  How to choose one? A way is to count the max number of words that appear in the reference.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdvn5qrkwj20qo0f0teo.jpg" alt=""></p>
+<p>Blue score on bigrams
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwaxawzsj20qo0f0q7m.jpg" alt=""></p>
+<p>Blue score on unigrams
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwcv6isoj20qo0f0wki.jpg" alt=""></p>
+<p>BP= brevity penalty
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwlzjnqbj20qo0f0tcu.jpg" alt=""></p>
+<p>##Attention model Intuition
+Encoder-decoder model can lose performance when a sentence is too long.</p>
+<p>In a bidirectional RNN, you can add an attention weight to each word, which measures how much attention you should pay attention to this word. Then these weights are sent to another RNN to evaluate attentions.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdxp784xwj20qo0f0gst.jpg" alt=""></p>
+<p>More clearly, $\alpha^{&lt;t,t\prime&gt;}= amount\ of\ attention\ that\ y^{&lt;t&gt;}\ should\ pay\ to\ a^{&lt;t\prime&gt;}$</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe09cy2tvj20qo0f0n4a.jpg" alt=""></p>
+<h3>Computing attention</h3>
+<p>Use a small NN to get proper e
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe0gosl03j20qo0f0tet.jpg" alt=""></p>
+<h1>Speech recognition - Audio Data</h1>
+<h2>Speech recognition</h2>
+<p>We can also apply an attention model to speech recognition.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetgs5x0kj20qo0f00v5.jpg" alt=""></p>
+<p>Another approach is Connectionist temporal classification.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetoydz9bj20qo0f0jwm.jpg" alt=""></p>
+<h2>Trigger Word Detection</h2>
+<p>Use 0/1 to distinguish trigger words or nornam words.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpeu5v60t2j20qo0f0dk9.jpg" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> Coursera </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Deep Learning </tag>
+            
+            <tag> NLP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Sequence Model week2]]></title>
       <url>/en/2018/03/10/Sequence-Model-week2/</url>
       <content type="html"><![CDATA[<h1>Introduction to Word Embeddings</h1>

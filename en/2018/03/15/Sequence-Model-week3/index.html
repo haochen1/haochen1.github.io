@@ -79,36 +79,38 @@
 
 
 
-<meta name="description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
+<meta name="description" content="Various sequence to sequence qrchitectures Basic Models Machine translation For a machine tanslation, you need a encoder-decoder model. In this model, each block can represent a RNN/LSTM/GRU.  Image c">
 <meta name="keywords" content="Deep Learning,NLP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sequence Model week2">
-<meta property="og:url" content="http://yoursite.com/en/2018/03/10/Sequence-Model-week2/index.html">
+<meta property="og:title" content="Sequence Model week3">
+<meta property="og:url" content="http://yoursite.com/en/2018/03/15/Sequence-Model-week3/index.html">
 <meta property="og:site_name" content="Machine Learning!">
-<meta property="og:description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
+<meta property="og:description" content="Various sequence to sequence qrchitectures Basic Models Machine translation For a machine tanslation, you need a encoder-decoder model. In this model, each block can represent a RNN/LSTM/GRU.  Image c">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3eyj4vo1j20qo0f0q7y.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h09qz12j20qo0f0dm3.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h5mkc70j20qo0f0n1d.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hp1pirjj20qo0f0adr.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hytdamvj20qo0f0wkm.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4l154hc6j20qo0f0grx.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4osyx745j20qo0f078i.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4qxi3hxvj20qo0f0dkw.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4r8vaxjsj20qo0f0jw0.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4rb9bz9qj20qo0f0goi.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5k889htuj20qo0f077t.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5ki84tauj20qo0f0q68.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5liyzosxj20qo0f0q7i.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5llahpgvj20qo0f0whs.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5pnb2omxj20qo0f0wjg.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fp5rtzo750j20qo0f00yd.jpg">
-<meta property="og:updated_time" content="2018-03-13T19:15:40.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbj7k98blj20qo0f0gq5.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbjl2nlhpj20qo0f0dmd.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbkgx0oo6j20qo0f0gr4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpblyt59uwj20qo0f0ad0.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbmkcxpj0j20qo0f0gv4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbml4fkw6j20qo0f0jw6.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fpcwk14z1lj20qo0f0wjq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpcwmzdh8tj20qo0f0gpn.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdsgsmf59j20qo0f0tez.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdvn5qrkwj20qo0f0teo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwaxawzsj20qo0f0q7m.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwcv6isoj20qo0f0wki.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwlzjnqbj20qo0f0tcu.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdxp784xwj20qo0f0gst.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe09cy2tvj20qo0f0n4a.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe0gosl03j20qo0f0tet.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetgs5x0kj20qo0f00v5.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetoydz9bj20qo0f0jwm.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpeu5v60t2j20qo0f0dk9.jpg">
+<meta property="og:updated_time" content="2018-03-18T18:10:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sequence Model week2">
-<meta name="twitter:description" content="Introduction to Word Embeddings Word Representation One-hot representation So far, we have used a vocabulary and one-hot representation $$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg">
+<meta name="twitter:title" content="Sequence Model week3">
+<meta name="twitter:description" content="Various sequence to sequence qrchitectures Basic Models Machine translation For a machine tanslation, you need a encoder-decoder model. In this model, each block can represent a RNN/LSTM/GRU.  Image c">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbj7k98blj20qo0f0gq5.jpg">
 
 
 
@@ -138,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/en/2018/03/10/Sequence-Model-week2/"/>
+  <link rel="canonical" href="http://yoursite.com/en/2018/03/15/Sequence-Model-week3/"/>
 
 
 
 
 
-  <title>Sequence Model week2 | Machine Learning!</title>
+  <title>Sequence Model week3 | Machine Learning!</title>
   
 
 
@@ -334,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/en/2018/03/10/Sequence-Model-week2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/en/2018/03/15/Sequence-Model-week3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hao Chen">
@@ -351,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sequence Model week2</h1>
+          <h1 class="post-title" itemprop="name headline">Sequence Model week3</h1>
         
 
         <div class="post-meta">
@@ -363,8 +365,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-10T20:12:49+01:00">
-                2018-03-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T20:12:49+01:00">
+                2018-03-15
               </time>
             
 
@@ -403,7 +405,7 @@
 
           
           
-             <span id="/en/2018/03/10/Sequence-Model-week2/" class="leancloud_visitors" data-flag-title="Sequence Model week2">
+             <span id="/en/2018/03/15/Sequence-Model-week3/" class="leancloud_visitors" data-flag-title="Sequence Model week3">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,72 +436,69 @@
       
 
       
-        <h1>Introduction to Word Embeddings</h1>
-<h2>Word Representation</h2>
-<h3>One-hot representation</h3>
-<p>So far, we have used a vocabulary and one-hot representation
-$$Man(5391)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\ 0 \end{bmatrix}=O_{5391}$$
-$$Woman(9853)= \begin{bmatrix} 0\\ \vdots \\ 0 \\ 1\\0\\ \vdots\\ 0 \end{bmatrix}=O_{9853}$$
-It's hard to recognize the relationship between 2 vectors, because inner product of any 2 one-hot vectors is 0.</p>
-<h3>Featurized representation: word embedding</h3>
-<p>Instead of using one-hot encoding, to represent a word, you can choose some features like Gender, Royal, Age, Food .. Size, Cost.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3d8i1h66j20qo0f0n3b.jpg" alt=""></p>
-<p>##Using word embeddings
-Using transfer learning and word embeddings can be a good approach to slove NLP problems.</p>
-<p>Here are the 3 steps that you need to do when considering this approach.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp3eyj4vo1j20qo0f0q7y.jpg" alt=""></p>
-<h2>Properties of word embeddings</h2>
-<p>One interesting property is if we take two vectors like $e_{man}$ and $e_{woman}$, $e_{man}-e_{woman}$ can give the main difference between 2 vectors.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h09qz12j20qo0f0dm3.jpg" alt="">
-To put this into an algorithm, for example, if you want to find what is the corresponding word of &quot;king&quot; in the way like &quot;man&quot; and &quot;woman&quot;, we need to calculate the similarity.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4h5mkc70j20qo0f0n1d.jpg" alt="">
-Two similarity calculation methods:</p>
-<ol>
-<li>** Cosine similarity **</li>
-<li>** Euclidian distance **
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hp1pirjj20qo0f0adr.jpg" alt=""></li>
-</ol>
-<h2>Embedding Matrix</h2>
-<p>You can put all Use an embeddinng matrix and one-hot vector can get an embedding vector easily.</p>
-<p>But in practice, use special function to look up an embedding.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4hytdamvj20qo0f0wkm.jpg" alt=""></p>
-<h1>Learning Word Embedddings: Word2vec &amp; GloVe</h1>
-<h2>Learning word embedddings</h2>
-<p>A learning model can be like: word embedding =&gt; neural network with parameters $w^{[1]}$ and $b^{[1]}$ =&gt; softmax with parameters $w^{[2]}$ and $b^{[2]}$</p>
-<p>A common algorithm for learning the matrix E looks like the following image, we want to predict the target word &quot;juice&quot; using context words&quot;a glass of orange&quot;.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4l154hc6j20qo0f0grx.jpg" alt="">
-Context can vary from last few words to next few words or both. Pairs of context/target are import</p>
-<h2>Word2Vec Skip-gram model</h2>
-<p>Word2Vec is a simple way to learn word embeddings.</p>
-<p>When apply Skip-grams for context/target selection, we randomly pick up words in a window as context/target.</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4osyx745j20qo0f078i.jpg" alt=""></p>
-<p>A problem with softmax classification, every time you need a propobility of a target word, you calculate a sum whose length equals to that of vocabulary. When you have many words in the vocabulary, it can be very slow.</p>
-<p>So instead of using softmax classification, hierarchical softmax can be a more proper way. You can use a tree to figure out that a word locates in which part of a vocabulary.</p>
-<p>For instance, the target can be chosen within a windows of -10/10 words. But choosing a context can be more tricky, you should avoid using frequent non-sense words like &quot;the&quot; &quot;and&quot; &quot;to&quot; &quot;a&quot;.</p>
-<p>A even simpler solution to this problem is Negative Sampling.</p>
-<h2>Negative Sampling</h2>
-<p>We create a supervised problem, given pairs of context/target as x, y should matching results in 0/1. To form a dataset, 5-20 pairs for small datasets and 2-5 pairs for larger datasets.</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4qxi3hxvj20qo0f0dkw.jpg" alt=""></p>
-<p>We only train the model with 1 correct pair and 4 other incorrect pairs.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4r8vaxjsj20qo0f0jw0.jpg" alt=""></p>
-<p>To select negative samples, the authur proposed a way:
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp4rb9bz9qj20qo0f0goi.jpg" alt=""></p>
-<h2>GloVe word vectors</h2>
-<p>We define pairs of context/target in the following way:
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5k889htuj20qo0f077t.jpg" alt=""></p>
-<p>The model looks like:
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5ki84tauj20qo0f0q68.jpg" alt="">
-You can't guarantee that an axis is well aligned to a feature.</p>
-<p>#Allications using Word Embeddings</p>
-<h2>Sentiment Classification</h2>
-<p>A simple sentiment classification model takes the average of each word embedding vector.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5liyzosxj20qo0f0q7i.jpg" alt=""></p>
-<p>Use a RNN can avoid disadvantages of some special sentences.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5llahpgvj20qo0f0whs.jpg" alt=""></p>
-<h2>Debiasing word embeddings</h2>
-<p>What is bias in word embedding?
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fp5pnb2omxj20qo0f0wjg.jpg" alt="">
-<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fp5rtzo750j20qo0f00yd.jpg" alt=""></p>
+        <h1>Various sequence to sequence qrchitectures</h1>
+<h2>Basic Models</h2>
+<h3>Machine translation</h3>
+<p>For a machine tanslation, you need a encoder-decoder model. In this model, each block can represent a RNN/LSTM/GRU.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbj7k98blj20qo0f0gq5.jpg" alt=""></p>
+<h3>Image captioning</h3>
+<p>How to interpret an image into a caption? In the example, we use a pre-trainde Alex network as encoders. Then we also need sevaral RNN blocks as decoders.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbjl2nlhpj20qo0f0dmd.jpg" alt=""></p>
+<h2>Picking the most likely sentence</h2>
+<p>A machine translation problem can be regarded as a conditional language model, and &quot;conditional&quot; means given the probability of the original sentence.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbkgx0oo6j20qo0f0gr4.jpg" alt=""></p>
+<p>###Why not a greedy search?
+<strong>greedy search:</strong> find the most likely word for the position 1, then for the position 2, etc..
+It doesn't work well when we need to translate a whole sentence.</p>
+<h2>Beam Search</h2>
+<h3>step 1</h3>
+<p>B=3 means that 3 most likely words are chosen.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpblyt59uwj20qo0f0ad0.jpg" alt=""></p>
+<h3>step 2</h3>
+<p>For each candidate word chosen in step 1, run RNN blocks to find out the most likely pairs of $y^{&lt;1&gt;},y^{&lt;2&gt;}$, then cut down these 30000 possibilities into 3 most possible.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbmkcxpj0j20qo0f0gv4.jpg" alt=""></p>
+<h3>step 3</h3>
+<p>Same pocesse like step 2.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpbml4fkw6j20qo0f0jw6.jpg" alt=""></p>
+<h2>Refinements to Beam Search</h2>
+<h3>Length normalization</h3>
+<p>$P(y^{&lt;1&gt;}...y^{&lt;T_y&gt;}|x)$ can be thought as a product of many conditional probabilities, which can be too small.</p>
+<p>The result of model tends to be short sentences, because the product of probability of short sentence is likely to be bigger.</p>
+<p>To avoid this disadvantage, one approach is dividing this product by number of words in the sentence.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fpcwk14z1lj20qo0f0wjq.jpg" alt=""></p>
+<h3>Beam search discussion</h3>
+<p>Beam width B is a compromise of performance and speed.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpcwmzdh8tj20qo0f0gpn.jpg" alt=""></p>
+<h2>Error analysis in beam search</h2>
+<p>When there is an error, we want to be clear this error comes from RNN or beam search.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdsgsmf59j20qo0f0tez.jpg" alt=""></p>
+<h2>Blue Score</h2>
+<p>There may be several possible translation for a sentence.  How to choose one? A way is to count the max number of words that appear in the reference.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdvn5qrkwj20qo0f0teo.jpg" alt=""></p>
+<p>Blue score on bigrams
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwaxawzsj20qo0f0q7m.jpg" alt=""></p>
+<p>Blue score on unigrams
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwcv6isoj20qo0f0wki.jpg" alt=""></p>
+<p>BP= brevity penalty
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdwlzjnqbj20qo0f0tcu.jpg" alt=""></p>
+<p>##Attention model Intuition
+Encoder-decoder model can lose performance when a sentence is too long.</p>
+<p>In a bidirectional RNN, you can add an attention weight to each word, which measures how much attention you should pay attention to this word. Then these weights are sent to another RNN to evaluate attentions.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpdxp784xwj20qo0f0gst.jpg" alt=""></p>
+<p>More clearly, $\alpha^{&lt;t,t\prime&gt;}= amount\ of\ attention\ that\ y^{&lt;t&gt;}\ should\ pay\ to\ a^{&lt;t\prime&gt;}$</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe09cy2tvj20qo0f0n4a.jpg" alt=""></p>
+<h3>Computing attention</h3>
+<p>Use a small NN to get proper e
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpe0gosl03j20qo0f0tet.jpg" alt=""></p>
+<h1>Speech recognition - Audio Data</h1>
+<h2>Speech recognition</h2>
+<p>We can also apply an attention model to speech recognition.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetgs5x0kj20qo0f00v5.jpg" alt=""></p>
+<p>Another approach is Connectionist temporal classification.
+<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpetoydz9bj20qo0f0jwm.jpg" alt=""></p>
+<h2>Trigger Word Detection</h2>
+<p>Use 0/1 to distinguish trigger words or nornam words.</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fpeu5v60t2j20qo0f0dk9.jpg" alt=""></p>
 
       
     </div>
@@ -547,8 +546,8 @@ You can't guarantee that an axis is well aligned to a feature.</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/en/2018/03/05/Sequence-Model-week1/" rel="next" title="Sequence Model week1">
-                <i class="fa fa-chevron-left"></i> Sequence Model week1
+              <a href="/en/2018/03/10/Sequence-Model-week2/" rel="next" title="Sequence Model week2">
+                <i class="fa fa-chevron-left"></i> Sequence Model week2
               </a>
             
           </div>
@@ -556,10 +555,6 @@ You can't guarantee that an axis is well aligned to a feature.</p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/en/2018/03/15/Sequence-Model-week3/" rel="prev" title="Sequence Model week3">
-                Sequence Model week3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -728,7 +723,7 @@ You can't guarantee that an axis is well aligned to a feature.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Word Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Word Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">One-hot representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">Featurized representation: word embedding</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Properties of word embeddings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Embedding Matrix</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Learning Word Embedddings: Word2vec &amp; GloVe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Learning word embedddings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Word2Vec Skip-gram model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">Negative Sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">GloVe word vectors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">Sentiment Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">Debiasing word embeddings</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Various sequence to sequence qrchitectures</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Basic Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">Machine translation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">Image captioning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">Picking the most likely sentence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">Beam Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.1.</span> <span class="nav-text">step 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.2.</span> <span class="nav-text">step 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.3.</span> <span class="nav-text">step 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">Refinements to Beam Search</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.1.</span> <span class="nav-text">Length normalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.2.</span> <span class="nav-text">Beam search discussion</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">Error analysis in beam search</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.</span> <span class="nav-text">Blue Score</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.1.</span> <span class="nav-text">Computing attention</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Speech recognition - Audio Data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Speech recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Trigger Word Detection</span></a></li></ol></li></ol></div>
             
 
           </div>
