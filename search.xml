@@ -181,12 +181,12 @@
 <ul>
 <li>boosting重采样的不是样本，而是样本的分布，对于分类正确的样本权值低，分类错误的样本权值高（通常是边界附近的样本），最后的分类器是很多弱分类器的线性叠加（加权组合），分类器相当简单。</li>
 </ul>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn9twt9idsj20ht0dijsf.jpg" alt=""></p>
 <p>下面我们具体来看一下两种常用的boosting算法：Adaboost和Gradient Boosting的具体原理。</p>
 <h2>Adaboost</h2>
 <p>Adaboost算法在分类问题中的主要特点：<strong>通过改变训练样本的权重，学习多个分类器，并将这些分类器进行线性组合，提高分类性能。</strong> AdaBoost－算法描述（伪代码）如下：</p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg&quot;/&gt;</p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ybc11vj20he0d6dgx.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fna0ytqioaj20hf06o3yy.jpg" alt=""></p>
 <h2>Gradient Boosting</h2>
 <p>提升树方法是利用加法模型与前向分布算法实现整个优化学习过程。Adaboost的指数损失和回归提升树的平方损失，在前向分布中的每一步都比较简单。但对于一般损失函数而言（比如绝对损失），每一个优化并不容易。</p>
 <p>针对这一问题。Freidman提出了梯度提升（gradient boosting）算法。该算法思想：</p>
@@ -239,7 +239,7 @@
 <li>将数据放在这m个分类器上跑，最后vote看到底分到哪一类</li>
 </ul>
 <p>下图是Bagging的选择策略，每次从N个数据中采样n次得到n个数据的一个bag，总共选择B次得到B个bags，也就是B个bootstrap samples.</p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn8p69xdj9j20j10dmq3s.jpg" alt=""></p>
 <h2>Random forest随机森林</h2>
 <p>随机森林在bagging基础上做了修改。</p>
 <ul>
@@ -288,7 +288,7 @@
       <content type="html"><![CDATA[<h1>代码</h1>
 <p>继上篇博客<a href="https://haochen1.github.io/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/" target="_blank" rel="noopener">Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理</a>。现在正式进入机器学习的算法部分，我想介绍的第一个是决策树Decision Tree。</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Decision Tree</span></span><br><span class="line">score=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">20</span>):</span><br><span class="line">    clf_dt = tree.DecisionTreeClassifier(max_depth=i)</span><br><span class="line">    clf_dt.fit (X_train, y_train)</span><br><span class="line">    score.append(clf_dt.score (X_test, y_test))</span><br><span class="line">plt.bar(range(<span class="number">1</span>,<span class="number">20</span>),score)</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/large/b66c02d5gy1fn5fnhiuqtj20ah070jr8.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fn5fnhiuqtj20ah070jr8.jpg" alt=""></p>
 <p>我们看出来3层是最好的深度。然后我们用cross-validation来算20次随机分配后的准确度。</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">clf_dt = tree.DecisionTreeClassifier(max_depth=<span class="number">3</span>)</span><br><span class="line">shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=<span class="number">20</span>, test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_classifier</span><span class="params">(clf)</span>:</span></span><br><span class="line">    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)</span><br><span class="line">    print(<span class="string">"Accuracy: %0.4f (+/- %0.2f)"</span> % (scores.mean(), scores.std()))</span><br><span class="line">test_classifier(clf_dt)</span><br></pre></td></tr></table></figure></p>
 <pre><code>Accuracy: 0.8149 (+/- 0.03)
@@ -440,8 +440,8 @@ $$
       <url>/2018/01/03/Kaggle%E7%AB%9E%E8%B5%9B%EF%BC%88%E4%B8%80%EF%BC%89%E9%A2%84%E6%B5%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%20%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5%E5%92%8C%E9%A2%84%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<p>在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。</p>
 <h1>下载数据集</h1>
-<p>进入<a href="https://www.kaggle.com/c/titanic/data" target="_blank" rel="noopener">Kaggle Titanic</a>页面下载数据集，我们可以看到这里有三个csv文件
-&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg&quot;/&gt;</p>
+<p>进入<a href="https://www.kaggle.com/c/titanic/data" target="_blank" rel="noopener">Kaggle Titanic</a>页面下载数据集，我们可以看到这里有三个csv文件</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg" alt=""></p>
 <ul>
 <li>train.csv是我们训练用数据，我们将使用这些数据建模</li>
 <li>test.csv是测试用数据，我们将用这些数据检验模型的准确度</li>
@@ -451,7 +451,7 @@ $$
 <p>我个人习惯用<a href="http://jupyter.org/" target="_blank" rel="noopener">Jupyter Notebook</a>，它可以直接生成markdown模式。可以直接安装<a href="https://anaconda.org/" target="_blank" rel="noopener">anaconda</a>，里面就包括了Jupyter Notebook。我们要做的是首先打开Jupyter Notebook，然后在数据集同个目录里新建一个Python notebook。然后正式开始我们的代码：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入几个基本库</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train.csv'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg" alt=""></p>
 <p>我们看到这个数据集包括：</p>
 <ol>
 <li>PassengerId，乘客的序号，从第一位开始到最后一位乘客</li>
@@ -498,11 +498,11 @@ dtype: int64
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping = df.groupby([<span class="string">'Pclass'</span>,<span class="string">'Sex'</span>]).mean()</span><br><span class="line">class_sex_grouping</span><br></pre></td></tr></table></figure></p>
 <p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49intgf2j20ew0630to.jpg&quot;/&gt;</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg" alt=""></p>
 <p>每个客舱等级里女性生还几率较大，还是比较绅士的。</p>
 <h2>按年龄层分组</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group_by_age = pd.cut(df[<span class="string">"Age"</span>], np.arange(<span class="number">0</span>, <span class="number">90</span>, <span class="number">10</span>))</span><br><span class="line">age_grouping = df.groupby(group_by_age).mean()</span><br><span class="line">age_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg" alt=""></p>
 <p>貌似年轻的生还几率比较大。</p>
 <h2>测试集统计</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_test=pd.read_csv(<span class="string">'test.csv'</span>)</span><br><span class="line">df_test.count()</span><br></pre></td></tr></table></figure></p>
@@ -523,11 +523,11 @@ dtype: int64
 <h1>处理缺失数据</h1>
 <h2>处理年龄</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同称谓的年龄中位数</span></span><br><span class="line">title_age_grouping=df[[<span class="string">'Title'</span>,<span class="string">'Age'</span>]].groupby(<span class="string">'Title'</span>).median()</span><br><span class="line">title_age_grouping.plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg" alt=""></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全年龄的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_ages</span><span class="params">(df,title_age_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(title_age_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> df.loc[i,<span class="string">'Title'</span>] == title_age_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Age'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Age'</span>]=title_age_grouping.Age[j]</span><br></pre></td></tr></table></figure></p>
 <h2>处理票价</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同客舱等级和称谓的票价中位数</span></span><br><span class="line">class_title_fare_grouping=df[[<span class="string">'Pclass'</span>,<span class="string">'Title'</span>,<span class="string">'Fare'</span>]].groupby([<span class="string">'Pclass'</span>,<span class="string">'Title'</span>]).median()</span><br><span class="line">class_title_fare_grouping.plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg" alt=""></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全票价的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_fares</span><span class="params">(df,class_title_fare_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(class_title_fare_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> (df.loc[i,<span class="string">'Pclass'</span>], df.loc[i,<span class="string">'Title'</span>])== class_title_fare_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Fare'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Fare'</span>]=class_title_fare_grouping.Fare[j]</span><br></pre></td></tr></table></figure></p>
 <h1>最后总体处理</h1>
 <ol>

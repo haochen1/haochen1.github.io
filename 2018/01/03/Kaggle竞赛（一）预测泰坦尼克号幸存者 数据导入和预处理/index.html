@@ -79,18 +79,25 @@
 
 
 
-<meta name="description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件 &amp;lt;img src=&amp;quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg&amp;qu">
+<meta name="description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件   train.csv是我们训练用数据，我们将使用这些数据建模 test.csv是测试用数据，我们将用这些数据检验模型的准确度 gender_submossion.csv">
 <meta name="keywords" content="Kaggle,分类问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理">
 <meta property="og:url" content="http://yoursite.com/2018/01/03/Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理/index.html">
 <meta property="og:site_name" content="机器学习之路">
-<meta property="og:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件 &amp;lt;img src=&amp;quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg&amp;qu">
+<meta property="og:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件   train.csv是我们训练用数据，我们将使用这些数据建模 test.csv是测试用数据，我们将用这些数据检验模型的准确度 gender_submossion.csv">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-05T00:01:32.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg">
+<meta property="og:updated_time" content="2018-04-09T17:57:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle竞赛（一）预测泰坦尼克号幸存者 数据导入和预处理">
-<meta name="twitter:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件 &amp;lt;img src=&amp;quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg&amp;qu">
+<meta name="twitter:description" content="在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。 下载数据集 进入Kaggle Titanic页面下载数据集，我们可以看到这里有三个csv文件   train.csv是我们训练用数据，我们将使用这些数据建模 test.csv是测试用数据，我们将用这些数据检验模型的准确度 gender_submossion.csv">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg">
 
 
 
@@ -429,8 +436,8 @@
       
         <p>在注册完Kaggle账号后，我们就可以来试一试Kaggle上最简单的分类问题，利用当年泰坦尼克号乘客的个人信息来预测他们其中的幸存者。</p>
 <h1>下载数据集</h1>
-<p>进入<a href="https://www.kaggle.com/c/titanic/data" target="_blank" rel="noopener">Kaggle Titanic</a>页面下载数据集，我们可以看到这里有三个csv文件
-&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg&quot;/&gt;</p>
+<p>进入<a href="https://www.kaggle.com/c/titanic/data" target="_blank" rel="noopener">Kaggle Titanic</a>页面下载数据集，我们可以看到这里有三个csv文件</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn34luyh1pj20py04gjrs.jpg" alt=""></p>
 <ul>
 <li>train.csv是我们训练用数据，我们将使用这些数据建模</li>
 <li>test.csv是测试用数据，我们将用这些数据检验模型的准确度</li>
@@ -440,7 +447,7 @@
 <p>我个人习惯用<a href="http://jupyter.org/" target="_blank" rel="noopener">Jupyter Notebook</a>，它可以直接生成markdown模式。可以直接安装<a href="https://anaconda.org/" target="_blank" rel="noopener">anaconda</a>，里面就包括了Jupyter Notebook。我们要做的是首先打开Jupyter Notebook，然后在数据集同个目录里新建一个Python notebook。然后正式开始我们的代码：</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入几个基本库</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df=pd.read_csv(<span class="string">'train.csv'</span>)</span><br><span class="line">df.head()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49fc552dj20r004h3zk.jpg" alt=""></p>
 <p>我们看到这个数据集包括：</p>
 <ol>
 <li>PassengerId，乘客的序号，从第一位开始到最后一位乘客</li>
@@ -487,11 +494,11 @@ dtype: int64
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping = df.groupby([<span class="string">'Pclass'</span>,<span class="string">'Sex'</span>]).mean()</span><br><span class="line">class_sex_grouping</span><br></pre></td></tr></table></figure></p>
 <p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn49intgf2j20ew0630to.jpg&quot;/&gt;</p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class_sex_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48k5bejzj20af08njr9.jpg" alt=""></p>
 <p>每个客舱等级里女性生还几率较大，还是比较绅士的。</p>
 <h2>按年龄层分组</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group_by_age = pd.cut(df[<span class="string">"Age"</span>], np.arange(<span class="number">0</span>, <span class="number">90</span>, <span class="number">10</span>))</span><br><span class="line">age_grouping = df.groupby(group_by_age).mean()</span><br><span class="line">age_grouping[<span class="string">'Survived'</span>].plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn48m7aqd0j20af087a9x.jpg" alt=""></p>
 <p>貌似年轻的生还几率比较大。</p>
 <h2>测试集统计</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_test=pd.read_csv(<span class="string">'test.csv'</span>)</span><br><span class="line">df_test.count()</span><br></pre></td></tr></table></figure></p>
@@ -512,11 +519,11 @@ dtype: int64
 <h1>处理缺失数据</h1>
 <h2>处理年龄</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同称谓的年龄中位数</span></span><br><span class="line">title_age_grouping=df[[<span class="string">'Title'</span>,<span class="string">'Age'</span>]].groupby(<span class="string">'Title'</span>).median()</span><br><span class="line">title_age_grouping.plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dxez5kjj20ac08xjrc.jpg" alt=""></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全年龄的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_ages</span><span class="params">(df,title_age_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(title_age_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> df.loc[i,<span class="string">'Title'</span>] == title_age_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Age'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Age'</span>]=title_age_grouping.Age[j]</span><br></pre></td></tr></table></figure></p>
 <h2>处理票价</h2>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不同客舱等级和称谓的票价中位数</span></span><br><span class="line">class_title_fare_grouping=df[[<span class="string">'Pclass'</span>,<span class="string">'Title'</span>,<span class="string">'Fare'</span>]].groupby([<span class="string">'Pclass'</span>,<span class="string">'Title'</span>]).median()</span><br><span class="line">class_title_fare_grouping.plot.bar()</span><br></pre></td></tr></table></figure></p>
-<p>&lt;img src=&quot;http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg&quot;/&gt;</p>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fn5dytzarmj20ai09ijrf.jpg" alt=""></p>
 <p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 补全票价的函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_fares</span><span class="params">(df,class_title_fare_grouping)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(df.index)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(class_title_fare_grouping.index)):</span><br><span class="line">            <span class="keyword">if</span> (df.loc[i,<span class="string">'Pclass'</span>], df.loc[i,<span class="string">'Title'</span>])== class_title_fare_grouping.index[j] <span class="keyword">and</span> np.isnan(df.loc[i,<span class="string">'Fare'</span>]):</span><br><span class="line">                df.loc[i,<span class="string">'Fare'</span>]=class_title_fare_grouping.Fare[j]</span><br></pre></td></tr></table></figure></p>
 <h1>最后总体处理</h1>
 <ol>
