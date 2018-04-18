@@ -3,6 +3,130 @@
   
     
     <entry>
+      <title><![CDATA[Running Jupyter Notebook on Google Cloud for a Kaggle challenge]]></title>
+      <url>/en/2018/04/18/Jupyter%20on%20GCP/</url>
+      <content type="html"><![CDATA[<p>When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I'd like to do it free with 300$ credit offered by Google Cloud Platform.</p>
+<h1>Step 1: Create a free account in Google Cloud</h1>
+<p>For this step, you can create a new Google Account or sign in with your Google Account on https://cloud.google.com/. Then, you will have to put your payment information and verify your account.</p>
+<h1>Step 2 : Create a new project on GCP</h1>
+<p>Click on the three dots shown in the image below and then click on the + sign to create a new project.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzqonxylj20zn0jymys.jpg" alt=""></p>
+<h1>Step 3 : Create a VM instance</h1>
+<p>Click on the three lines on the upper left corner, then on the compute option, click on ‘Compute Engine’</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzurimk3j20ij09vgm2.jpg" alt=""></p>
+<p>Now click on ‘Create new instance’. Name your instance, select a zone close to you, in my case, I chose 'europe-west1-b' .Choose your ‘machine type’. (I chose 8v CPUs 52 GB memory because i had a huge dataset). GCP will give you a estimated price according to your configurations.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh00w2994j20rh09dq3g.jpg" alt=""></p>
+<p>You can also customize your vitual machine if you need GPUs. Attention, GPUs are available only in several zones. So , make sure that you have chosen a zone from below:</p>
+<ul>
+<li>us-west1-b</li>
+<li>us-central1-c</li>
+<li>us-central1-f</li>
+<li>us-east1-c</li>
+<li>europe-west1-b</li>
+<li>europe-west1-d</li>
+<li>asia-east1-a</li>
+<li>asia-east1-c</li>
+<li>europe-west4-a</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh09m85ddj20d70gcq3q.jpg" alt=""></p>
+<p>Under Boot Disk option, select your os as ‘Ubuntu 16.04 LTS’ and your disk size as what you need for your datasets, for example, I need 50 GB.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0hj7da8j20m70r5goz.jpg" alt=""></p>
+<p>Under the firewall options tick both ‘http’ and ‘https’ (very important). Then, choose the disk tab and untick ‘ Delete boot disk when instance is deleted’.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0j71xh6j20ei0eyjs4.jpg" alt=""></p>
+<p>Now click on ‘Create’ and your instance is ready!</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh35wku3uj20ur0cjt9a.jpg" alt=""></p>
+<p><strong>IMPORTANT : DON’T FORGET TO STOP YOUR GPU INSTANCE AFTER YOU ARE DONE BY CLICKING ON THE THREE DOTS ON THE IMAGE ABOVE AND SELECTING STOP. OTHERWISE GCP WILL KEEP CHARGING YOU ON AN HOURLY BASIS.</strong></p>
+<h1>Step 4: Make external IP address as static</h1>
+<p>By default, the external IP address is dynamic and we need to make it static to make our life easier. Click on the three horizontal lines on top left and then under networking, click on VPC network and then External IP addresses.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3esd116j20cn0n13zp.jpg" alt=""></p>
+<p>Change the type from Ephemeral to Static.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3i1zgulj20og03ydfu.jpg" alt=""></p>
+<p>Now, click on the ‘Firewall rules’ setting under VPC network. Click on ‘Create Firewall Rules’ and refer the below image:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3pd7lmjj20gi0owmxz.jpg" alt=""></p>
+<p>Under protocols and ports you can choose any port. I have chosen tcp:5000 as my port number. Now click on the save button.</p>
+<h1>Step 5 : Install Google Cloud SDK</h1>
+<p>According to your OS, refer the corresponding document on https://cloud.google.com/sdk/docs/quickstarts</p>
+<p>Then run
+<code>gcloud init</code>
+follow steps on yhe website to initialize your Google Cloud SDK.</p>
+<h1>Step 6 : Install Jupyter notebook and other packages</h1>
+<p>Open a terminal, connect to your VM instance:</p>
+<p><code>gcloud compute --project &lt;project name&gt; ssh --zone &lt;zone name&gt; &lt;instance name&gt;</code></p>
+<p>Then, install anaconda3 into your VM,</p>
+<pre><code>wget http://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh	
+
+bash Anaconda3-4.0.0-Linux-x86_64.sh
+</code></pre>
+<p>and follow the on-screen instructions. The defaults usually work fine, but answer yes to the last question about prepending the install location to PATH:</p>
+<pre><code>Do you wish the installer to prepend the 
+Anaconda3 install location to PATH 
+in your /home/haroldsoh/.bashrc ? 
+[yes|no][no] &gt;&gt;&gt; yes
+</code></pre>
+<p>To make use of Anaconda right away, source your bashrc:</p>
+<pre><code>source ~/.bashrc
+</code></pre>
+<p>Now, install other softwares, for example</p>
+<pre><code>conda install -c conda-forge lightgbm 
+</code></pre>
+<h1>Step 7: Set up the VM server</h1>
+<p>Open up a SSH session to your VM. Check if you have a Jupyter configuration file:</p>
+<pre><code>ls ~/.jupyter/jupyter_notebook_config.py
+</code></pre>
+<p>If it doesn’t exist, create one:</p>
+<pre><code>jupyter notebook --generate-config
+</code></pre>
+<p>We’re going to add a few lines to your Jupyter configuration file; the file is plain text so, you can do this via your favorite editor (e.g., vim, emacs). Make sure you replace the port number with the one you allowed firewall access to in step 4.</p>
+<pre><code>c = get_config()
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = &lt;Port Number&gt;
+</code></pre>
+<p>It should look something like this :</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4q4uy1yj20s40jgmyq.jpg" alt=""></p>
+<h1>Step 8 : Launching Jupyter Notebook</h1>
+<p>To run the jupyter notebook, just type the following command in the ssh window you are in :</p>
+<pre><code>jupyter notebook --ip=0.0.0.0 --port=&lt;port-number&gt; --no-browser &amp;
+</code></pre>
+<p>Once you run the command, it gives you a token like this:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4x9syeaj20k20a3ac6.jpg" alt=""></p>
+<p>Now to launch your jupyter notebook, just type the following in your browser :</p>
+<pre><code>http://&lt;External Static IP Address&gt;:&lt;Port Number&gt;
+</code></pre>
+<p>where, external ip address is the ip address which we made static and port number is the one which we allowed firewall access to.</p>
+<p>Enter the token you got in the last step:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh57tvcx7j20rl0mxgn4.jpg" alt=""></p>
+<p>Then you have a jupyter notebook running on GCP.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh5amoxfgj21az0f2q3f.jpg" alt=""></p>
+<h1>References</h1>
+<ol>
+<li>
+<p><a href="https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52" target="_blank" rel="noopener">Running Jupyter Notebook on Google Cloud Platform in 15 min</a></p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/sdk/docs/quickstarts" target="_blank" rel="noopener">Google Cloud Quickstarts</a></p>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Kaggle </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Google Cloud Platform </tag>
+            
+            <tag> Kaggle </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Sequence Model week3]]></title>
       <url>/en/2018/03/15/Sequence-Model-week3/</url>
       <content type="html"><![CDATA[<h1>Various sequence to sequence qrchitectures</h1>

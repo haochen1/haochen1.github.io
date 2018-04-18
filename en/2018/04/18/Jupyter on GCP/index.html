@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Deep Learning,NLP," />
+  <meta name="keywords" content="Google Cloud Platform,Kaggle," />
 
 
 
@@ -79,25 +79,33 @@
 
 
 
-<meta name="description" content="Why sequence models Examples of sequence data  speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
-<meta name="keywords" content="Deep Learning,NLP">
+<meta name="description" content="When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I&apos;d like to do it f">
+<meta name="keywords" content="Google Cloud Platform,Kaggle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Sequence Model week1">
-<meta property="og:url" content="http://yoursite.com/en/2018/03/05/Sequence-Model-week1/index.html">
+<meta property="og:title" content="Running Jupyter Notebook on Google Cloud for a Kaggle challenge">
+<meta property="og:url" content="http://yoursite.com/en/2018/04/18/Jupyter on GCP/index.html">
 <meta property="og:site_name" content="Machine Learning!">
-<meta property="og:description" content="Why sequence models Examples of sequence data  speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
+<meta property="og:description" content="When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I&apos;d like to do it f">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxli3a7huj20qo0f0ajs.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxmfgoxgvj20qo0f0tb5.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxte03cmaj20qo0f0ah7.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxty66rg6j20qo0f0agb.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxu8xx22fj20qo0f0grx.jpg">
-<meta property="og:updated_time" content="2018-03-13T19:15:10.000Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzqonxylj20zn0jymys.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzurimk3j20ij09vgm2.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh00w2994j20rh09dq3g.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh09m85ddj20d70gcq3q.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0hj7da8j20m70r5goz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0j71xh6j20ei0eyjs4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh35wku3uj20ur0cjt9a.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3esd116j20cn0n13zp.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3i1zgulj20og03ydfu.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3pd7lmjj20gi0owmxz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4q4uy1yj20s40jgmyq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4x9syeaj20k20a3ac6.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh57tvcx7j20rl0mxgn4.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh5amoxfgj21az0f2q3f.jpg">
+<meta property="og:updated_time" content="2018-04-18T18:15:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Sequence Model week1">
-<meta name="twitter:description" content="Why sequence models Examples of sequence data  speech recognition Music generation Sentiment classification DNA sequence analysis Machine translation Video activity recognition Name entity recognition">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg">
+<meta name="twitter:title" content="Running Jupyter Notebook on Google Cloud for a Kaggle challenge">
+<meta name="twitter:description" content="When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I&apos;d like to do it f">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzqonxylj20zn0jymys.jpg">
 
 
 
@@ -127,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/en/2018/03/05/Sequence-Model-week1/"/>
+  <link rel="canonical" href="http://yoursite.com/en/2018/04/18/Jupyter on GCP/"/>
 
 
 
 
 
-  <title>Sequence Model week1 | Machine Learning!</title>
+  <title>Running Jupyter Notebook on Google Cloud for a Kaggle challenge | Machine Learning!</title>
   
 
 
@@ -323,7 +331,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/en/2018/03/05/Sequence-Model-week1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/en/2018/04/18/Jupyter on GCP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hao Chen">
@@ -340,7 +348,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Sequence Model week1</h1>
+          <h1 class="post-title" itemprop="name headline">Running Jupyter Notebook on Google Cloud for a Kaggle challenge</h1>
         
 
         <div class="post-meta">
@@ -352,8 +360,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T20:12:49+01:00">
-                2018-03-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-18T20:06:49+02:00">
+                2018-04-18
               </time>
             
 
@@ -375,8 +383,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/en/categories/Coursera/" itemprop="url" rel="index">
-                    <span itemprop="name">Coursera</span>
+                  <a href="/en/categories/Kaggle/" itemprop="url" rel="index">
+                    <span itemprop="name">Kaggle</span>
                   </a>
                 </span>
 
@@ -393,9 +401,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/en/2018/03/05/Sequence-Model-week1/#comments" itemprop="discussionUrl">
+                <a href="/en/2018/04/18/Jupyter on GCP/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/05/Sequence-Model-week1/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/04/18/Jupyter on GCP/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -403,7 +411,7 @@
 
           
           
-             <span id="/en/2018/03/05/Sequence-Model-week1/" class="leancloud_visitors" data-flag-title="Sequence Model week1">
+             <span id="/en/2018/04/18/Jupyter on GCP/" class="leancloud_visitors" data-flag-title="Running Jupyter Notebook on Google Cloud for a Kaggle challenge">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,202 +442,108 @@
       
 
       
-        <h1>Why sequence models</h1>
-<h2>Examples of sequence data</h2>
+        <p>When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I'd like to do it free with 300$ credit offered by Google Cloud Platform.</p>
+<h1>Step 1: Create a free account in Google Cloud</h1>
+<p>For this step, you can create a new Google Account or sign in with your Google Account on https://cloud.google.com/. Then, you will have to put your payment information and verify your account.</p>
+<h1>Step 2 : Create a new project on GCP</h1>
+<p>Click on the three dots shown in the image below and then click on the + sign to create a new project.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzqonxylj20zn0jymys.jpg" alt=""></p>
+<h1>Step 3 : Create a VM instance</h1>
+<p>Click on the three lines on the upper left corner, then on the compute option, click on ‘Compute Engine’</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqgzurimk3j20ij09vgm2.jpg" alt=""></p>
+<p>Now click on ‘Create new instance’. Name your instance, select a zone close to you, in my case, I chose 'europe-west1-b' .Choose your ‘machine type’. (I chose 8v CPUs 52 GB memory because i had a huge dataset). GCP will give you a estimated price according to your configurations.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh00w2994j20rh09dq3g.jpg" alt=""></p>
+<p>You can also customize your vitual machine if you need GPUs. Attention, GPUs are available only in several zones. So , make sure that you have chosen a zone from below:</p>
+<ul>
+<li>us-west1-b</li>
+<li>us-central1-c</li>
+<li>us-central1-f</li>
+<li>us-east1-c</li>
+<li>europe-west1-b</li>
+<li>europe-west1-d</li>
+<li>asia-east1-a</li>
+<li>asia-east1-c</li>
+<li>europe-west4-a</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh09m85ddj20d70gcq3q.jpg" alt=""></p>
+<p>Under Boot Disk option, select your os as ‘Ubuntu 16.04 LTS’ and your disk size as what you need for your datasets, for example, I need 50 GB.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0hj7da8j20m70r5goz.jpg" alt=""></p>
+<p>Under the firewall options tick both ‘http’ and ‘https’ (very important). Then, choose the disk tab and untick ‘ Delete boot disk when instance is deleted’.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh0j71xh6j20ei0eyjs4.jpg" alt=""></p>
+<p>Now click on ‘Create’ and your instance is ready!</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh35wku3uj20ur0cjt9a.jpg" alt=""></p>
+<p><strong>IMPORTANT : DON’T FORGET TO STOP YOUR GPU INSTANCE AFTER YOU ARE DONE BY CLICKING ON THE THREE DOTS ON THE IMAGE ABOVE AND SELECTING STOP. OTHERWISE GCP WILL KEEP CHARGING YOU ON AN HOURLY BASIS.</strong></p>
+<h1>Step 4: Make external IP address as static</h1>
+<p>By default, the external IP address is dynamic and we need to make it static to make our life easier. Click on the three horizontal lines on top left and then under networking, click on VPC network and then External IP addresses.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3esd116j20cn0n13zp.jpg" alt=""></p>
+<p>Change the type from Ephemeral to Static.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3i1zgulj20og03ydfu.jpg" alt=""></p>
+<p>Now, click on the ‘Firewall rules’ setting under VPC network. Click on ‘Create Firewall Rules’ and refer the below image:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh3pd7lmjj20gi0owmxz.jpg" alt=""></p>
+<p>Under protocols and ports you can choose any port. I have chosen tcp:5000 as my port number. Now click on the save button.</p>
+<h1>Step 5 : Install Google Cloud SDK</h1>
+<p>According to your OS, refer the corresponding document on https://cloud.google.com/sdk/docs/quickstarts</p>
+<p>Then run
+<code>gcloud init</code>
+follow steps on yhe website to initialize your Google Cloud SDK.</p>
+<h1>Step 6 : Install Jupyter notebook and other packages</h1>
+<p>Open a terminal, connect to your VM instance:</p>
+<p><code>gcloud compute --project &lt;project name&gt; ssh --zone &lt;zone name&gt; &lt;instance name&gt;</code></p>
+<p>Then, install anaconda3 into your VM,</p>
+<pre><code>wget http://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh	
+
+bash Anaconda3-4.0.0-Linux-x86_64.sh
+</code></pre>
+<p>and follow the on-screen instructions. The defaults usually work fine, but answer yes to the last question about prepending the install location to PATH:</p>
+<pre><code>Do you wish the installer to prepend the 
+Anaconda3 install location to PATH 
+in your /home/haroldsoh/.bashrc ? 
+[yes|no][no] &gt;&gt;&gt; yes
+</code></pre>
+<p>To make use of Anaconda right away, source your bashrc:</p>
+<pre><code>source ~/.bashrc
+</code></pre>
+<p>Now, install other softwares, for example</p>
+<pre><code>conda install -c conda-forge lightgbm 
+</code></pre>
+<h1>Step 7: Set up the VM server</h1>
+<p>Open up a SSH session to your VM. Check if you have a Jupyter configuration file:</p>
+<pre><code>ls ~/.jupyter/jupyter_notebook_config.py
+</code></pre>
+<p>If it doesn’t exist, create one:</p>
+<pre><code>jupyter notebook --generate-config
+</code></pre>
+<p>We’re going to add a few lines to your Jupyter configuration file; the file is plain text so, you can do this via your favorite editor (e.g., vim, emacs). Make sure you replace the port number with the one you allowed firewall access to in step 4.</p>
+<pre><code>c = get_config()
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = &lt;Port Number&gt;
+</code></pre>
+<p>It should look something like this :</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4q4uy1yj20s40jgmyq.jpg" alt=""></p>
+<h1>Step 8 : Launching Jupyter Notebook</h1>
+<p>To run the jupyter notebook, just type the following command in the ssh window you are in :</p>
+<pre><code>jupyter notebook --ip=0.0.0.0 --port=&lt;port-number&gt; --no-browser &amp;
+</code></pre>
+<p>Once you run the command, it gives you a token like this:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh4x9syeaj20k20a3ac6.jpg" alt=""></p>
+<p>Now to launch your jupyter notebook, just type the following in your browser :</p>
+<pre><code>http://&lt;External Static IP Address&gt;:&lt;Port Number&gt;
+</code></pre>
+<p>where, external ip address is the ip address which we made static and port number is the one which we allowed firewall access to.</p>
+<p>Enter the token you got in the last step:</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh57tvcx7j20rl0mxgn4.jpg" alt=""></p>
+<p>Then you have a jupyter notebook running on GCP.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqh5amoxfgj21az0f2q3f.jpg" alt=""></p>
+<h1>References</h1>
 <ol>
-<li>speech recognition</li>
-<li>Music generation</li>
-<li>Sentiment classification</li>
-<li>DNA sequence analysis</li>
-<li>Machine translation</li>
-<li>Video activity recognition</li>
-<li>Name entity recognition</li>
+<li>
+<p><a href="https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52" target="_blank" rel="noopener">Running Jupyter Notebook on Google Cloud Platform in 15 min</a></p>
+</li>
+<li>
+<p><a href="https://cloud.google.com/sdk/docs/quickstarts" target="_blank" rel="noopener">Google Cloud Quickstarts</a></p>
+</li>
 </ol>
-<h1>Notation</h1>
-<h2>Motivating example</h2>
-<p>Name entity recognition</p>
-<table>
-<thead>
-<tr>
-<th>x</th>
-<th>Harry</th>
-<th>Potter</th>
-<th>and</th>
-<th>Hermione</th>
-<th>Granger</th>
-<th>invented</th>
-<th>a</th>
-<th>new</th>
-<th>spell.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>y</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<p>$$x^{&lt;1&gt;} \to x^{&lt;9&gt;} stand\ for\ the\ 1st\ to\ 9th\ element\ in\ x\ vector, T_x=9\ length=9$$</p>
-<p>$$y^{&lt;1&gt;} \to y^{&lt;9&gt;} stand\ for\ the\ 1st\ to\ 9th\ element\ in\ y\ vector, T_y=9\ length =9$$</p>
-<p>$x^{(i)&lt;t&gt;}$ refers to $(i)$th training example's $&lt;t&gt;$th element.</p>
-<p>$T_x^{(i)}$ would be the input sequence length for training example i.</p>
-<h2>Representing words</h2>
-<p>To represent words in a sentence, firstly we need a Vocabulary/Dictionary which is a list of the words that you will use in your representations.</p>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>aaron</th>
-<th>...</th>
-<th>and</th>
-<th>...</th>
-<th>harry</th>
-<th>...</th>
-<th>potter</th>
-<th>...</th>
-<th>zulu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>...</td>
-<td>367</td>
-<td>...</td>
-<td>4075</td>
-<td>...</td>
-<td>6830</td>
-<td>...</td>
-<td>10000</td>
-</tr>
-</tbody>
-</table>
-<p>Use one-hot encoding</p>
-<p>$$x^{&lt;1&gt;}= \begin{bmatrix}  0\\   \vdots \\   0\\ 1\leftarrow4075\\ 0\\   \vdots  \\  0   \end{bmatrix};
-x^{&lt;2&gt;}=\begin{bmatrix}  0\\   \vdots \\   0\\ 1\leftarrow6830\\ 0\\   \vdots  \\  0   \end{bmatrix};
-x^{&lt;3&gt;}=\begin{bmatrix}  0\\   \vdots \\   0\\ 1\leftarrow367\\ 0\\   \vdots  \\  0   \end{bmatrix};
-x^{&lt;7&gt;}=\begin{bmatrix}  1\\   \vdots \\   0\\ 0\\ 0\\   \vdots  \\  0   \end{bmatrix}$$
-When a word can't be found in the Vocabulary, we shall add $&lt;UNK&gt;$ to represent this word.</p>
-<h1>Recurrent Neural Networks</h1>
-<h2>Why not a standard network?</h2>
-<p>Some problems:</p>
-<ul>
-<li>Inputs, outputs can be different lengths in different examples.</li>
-<li>Doesn't share features learned across different positions of text.</li>
-</ul>
-<h2>Recurrent Neural Networks</h2>
-<p>$y^{&lt;i&gt;}$ not only depends on the current input$x^{&lt;i&gt;}$, but also depends on former inputs $x^{&lt;i-1&gt;} \dots x^{1}$.</p>
-<p>Each layer passes an activation function $a^{&lt;i&gt;}$ to next layer $&lt;i+1&gt;$, at the beginning, we will need a $a^{&lt;0&gt;}$ which is usually a vector of zeros.</p>
-<h3>Uni-direction vs Bi-direction</h3>
-<p>There is a problem for this Uni-diretional RNN:</p>
-<ul>
-<li>The current level output can only consider current and former inputs.</li>
-</ul>
-<p>But sometimes you have to look at following words, for example:</p>
-<ul>
-<li>He said, &quot;Teddy Roosevelt was a great President.&quot;</li>
-<li>He said, &quot;Teddy bears are on sale!&quot;</li>
-</ul>
-<p>In this case, the first three words are same, in order to figure out what &quot;Teddy&quot; exactely refers to, you should take the following words like &quot;Roosevelt&quot; or &quot;bears&quot; into considerations. So, there comes a RNN model that considers both former and following words, which is called Bidirectional RNN(BRNN).</p>
-<h2>Forward Propagation</h2>
-<p>At the ever beginning
-$$a^{&lt;0&gt;}=\vec{0}$$
-For the first level
-$$a^{&lt;1&gt;}=g_1(w_{aa}a^{&lt;0&gt;}+w_{ax}x^{&lt;1&gt;}+b_a)\leftarrow \underline{tanh}\ or\  ReLU\
-\hat y^{&lt;1&gt;}=g_2(w_{ya}a^{&lt;1&gt;}+b_y)\leftarrow\ sigmoid$$
-More generally
-$$a^{&lt;t&gt;}=g_1(w_{aa}a^{&lt;t-1&gt;}+w_{ax}x^{&lt;t&gt;}+b_a)\leftarrow \underline{tanh}\ or\  ReLU\
-\hat y^{&lt;t&gt;}=g_2(w_{ya}a^{&lt;t&gt;}+b_y)\leftarrow\ sigmoid$$</p>
-<h3>Simplified RNN notation</h3>
-<p>You can write the above formula like:
-$$a^{&lt;t&gt;}=g_1(w_{a}\binom{a^{&lt;t-1&gt;}}{x{&lt;t&gt;}}+b_a) \ [w_{aa}\ w_{ax}]=w_a$$</p>
-<h2>Backpropagation through time</h2>
-<p>Usually, a DL framework can automatically take care of backpropagation.</p>
-<p>Defining a loss function to finish the backpropogation.</p>
-<h1>Different types of RNNs</h1>
-<p>When we have length of input equals to length of output, it's called: <strong>Many-to-many architecture</strong>: $T_x=T_y$.</p>
-<p>By contrast, for a sentiment classification problem,$x=text\ ;\ y=0/1 \ or 1..5 $, rather than using every input to have an output, you can just let RNN read the whole sentence and get an output at the last step. This model is called <strong>Many-to-one architecture</strong>.</p>
-<p>There is also <strong>one-to-one architecture</strong>, which is maybe less interesting.</p>
-<p>In the end, you can have <strong>one-to-many architecture</strong> that can be used for music generation. You provide an integer as the gender of music or as a first key, you get a chapiter of music.</p>
-<p>Another example is Machine translation, it's another version of many-to-many architecture, but there are two distinguishable parts: &quot;encoder&quot;(pure inputs) and &quot;decoder&quot;(pure outputs).</p>
-<h1>Languages model and sequence generation</h1>
-<h2>Speech recognition</h2>
-<p>For example, when I say</p>
-<blockquote>
-<p>The apple and pear salad were delicious.</p>
-</blockquote>
-<p>even for those best speech recognition systems, it's hard to figure out</p>
-<ol>
-<li>The apple and pair salad</li>
-<li>The apple and pear salad</li>
-</ol>
-<p>A speech recognition system could give a probability to each sentence. If the second one has a higher probability, it will be chosen.</p>
-<h2>language modelling with an RNN</h2>
-<p><strong>Trainng set</strong>: large corpus of english text.</p>
-<p>You need firstly <strong>tokenize</strong> the text.</p>
-<p>Cats average 15 hours of sleep a day. EOS =&gt; $y^{&lt;1&gt;}\ y^{&lt;2&gt;}\ y^{&lt;3&gt;}\ ... y^{&lt;9&gt;}$$$&lt;EOS&gt;= end\ of\ sentence$$</p>
-<p>The Egyptian Mau is a bread of cat. The special word Mau=&gt;$&lt;UNK&gt;=Unknown$</p>
-<h2>RNN model</h2>
-<p>At each step of a RNN network, the output should be a probability of all words in a dictionary given last words.</p>
-<p>To train this network, the loss function at step t could be $L(\hat{y}^{&lt;t&gt;},y^{&lt;t&gt;})=-\sum{y_i^{&lt;t&gt;}log\hat{y}_i^{&lt;t&gt;}}$. The overall loss is $L=\sum{L^{&lt;t&gt;}(\hat{y}^{&lt;t&gt;},y^{&lt;t&gt;})}$.</p>
-<p>With thismodel, we can predict the next word given a set of words.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fowe70ba7uj20qo0f07b4.jpg" alt=""></p>
-<h1>Sampling novel sequences</h1>
-<h2>Sampling a sequence from a trained RNN</h2>
-<h3>Word-level language model</h3>
-<p>Use words as inputs to train RNN models</p>
-<h3>Character-level language model</h3>
-<p>Use characters as inputs to train RNN models
-pros:</p>
-<ul>
-<li>Don't have to worry about UNK
-cons:</li>
-<li>you end up with much longer sequences, 10-20 words equal 100-200 characters, so it's harder to capture dependencies from former characters</li>
-<li>more computationally expensive to train</li>
-</ul>
-<h1>Vanishing gradients with RNNs</h1>
-<p>Just like deep neural networks, it can be quite difficult to let the later time steps affect the earlier computations. But for RNNs, it's possible to have both vanishing and exploding gradients.</p>
-<p>A possible solution for exploding gradients is to apply gradient clipping, which means looking at your gradient vector, if it's bigger than some thresholds, resize these gradient vectors.</p>
-<h1>Gated Recurrent Unit(GRU)</h1>
-<p>GRU is a possible solution to vanishing gradients.</p>
-<h2>GRU(simplified)</h2>
-<p>For example, there is a sentence &quot;The cat, which already ate... , was full &quot;, you have to memorize it's &quot;cat&quot; or &quot;cats&quot; to decide &quot;was&quot; or &quot;were&quot;.
-$$c=memory\ cell$$
-$$c^{&lt;t&gt;}=a^{&lt;t&gt;}$$
-Then there is a candidate for replacing the memory cell:
-$$\tilde{c}^{&lt;t&gt;}=tanh(w_c[c^{&lt;t-1&gt;},x^{&lt;t&gt;}]+b_c)$$
-$$\Gamma_u=\sigma(w_u[c^{&lt;t-1&gt;},x^{&lt;t&gt;}]+b_u), u=update$$
-The $\Gamma_u$ should be 1 at the word &quot;cat&quot;, 0 at other words.</p>
-<p>For a sigmoid function, the result is a number between 0 and 1, and most time it's either 0 or 1. So it's called <strong>Gate</strong>.</p>
-<p>Then use the following function to update memory cells:
-$$c^{&lt;t&gt;}=\Gamma_u*\tilde{c}^{&lt;t&gt;}+(1-\Gamma_u)*c^{&lt;t-1&gt;}$$</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxli3a7huj20qo0f0ajs.jpg" alt=""></p>
-<h2>Full GRU</h2>
-<p>In the full version GRU, we add a new gate $\Gamma_r$ in the candidate function, r stands for relevance. The main structure keeps unchanged.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxmfgoxgvj20qo0f0tb5.jpg" alt=""></p>
-<h1>Long Short term Memory(LSTM)</h1>
-<p>Another solution, maybe even more powerful than GRU in some cases, is LSTM. Instead of using two gates, an update, a forget gate and an output gate are used in LSTM.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxte03cmaj20qo0f0ah7.jpg" alt="">
-At each time step, we use those three gates to update memory cells.</p>
-<p>LSTM came out earlier than GRU, but in different cases, they could have different performances.</p>
-<h1>Bidirectional RNN</h1>
-<p>In the previous models, there are only forwards connections, but in BRNN, there will be also backwards connections.
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxty66rg6j20qo0f0agb.jpg" alt="">
-A Bidirectional structure with LSTM blocks is a first thing to try for recent NLP problems.</p>
-<h1>Deep RNNs</h1>
-<p>In a deep RNN, we shall use a chained blocks as a layer. So to compute a block, both horizontal and vertical inputs are needed. Like $a^{[2]&lt;3&gt;}=g(w_a^{[2]}[a^{[2]&lt;2&gt;},a^{[1]&lt;3&gt;}]+b_a^{[3]})$
-<img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1foxu8xx22fj20qo0f0grx.jpg" alt=""></p>
-<p>Usually there aren't many horizontal layers, but we add some vertical connections at the last layer outputs.</p>
 
       
     </div>
@@ -647,9 +561,9 @@ A Bidirectional structure with LSTM blocks is a first thing to try for recent NL
       
         <div class="post-tags">
           
-            <a href="/en/tags/Deep-Learning/" rel="tag"># Deep Learning</a>
+            <a href="/en/tags/Google-Cloud-Platform/" rel="tag"># Google Cloud Platform</a>
           
-            <a href="/en/tags/NLP/" rel="tag"># NLP</a>
+            <a href="/en/tags/Kaggle/" rel="tag"># Kaggle</a>
           
         </div>
       
@@ -677,15 +591,15 @@ A Bidirectional structure with LSTM blocks is a first thing to try for recent NL
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/en/2018/03/15/Sequence-Model-week3/" rel="next" title="Sequence Model week3">
+                <i class="fa fa-chevron-left"></i> Sequence Model week3
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/en/2018/03/10/Sequence-Model-week2/" rel="prev" title="Sequence Model week2">
-                Sequence Model week2 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -859,7 +773,7 @@ A Bidirectional structure with LSTM blocks is a first thing to try for recent NL
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Why sequence models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">Examples of sequence data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Notation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">Motivating example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">Representing words</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Recurrent Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">Why not a standard network?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">Recurrent Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">Uni-direction vs Bi-direction</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.</span> <span class="nav-text">Forward Propagation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.3.1.</span> <span class="nav-text">Simplified RNN notation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.4.</span> <span class="nav-text">Backpropagation through time</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Different types of RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Languages model and sequence generation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">Speech recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.2.</span> <span class="nav-text">language modelling with an RNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.3.</span> <span class="nav-text">RNN model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Sampling novel sequences</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">Sampling a sequence from a trained RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.1.</span> <span class="nav-text">Word-level language model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.2.</span> <span class="nav-text">Character-level language model</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Vanishing gradients with RNNs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">Gated Recurrent Unit(GRU)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.1.</span> <span class="nav-text">GRU(simplified)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.2.</span> <span class="nav-text">Full GRU</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">Long Short term Memory(LSTM)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">Bidirectional RNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">Deep RNNs</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">Step 1: Create a free account in Google Cloud</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">Step 2 : Create a new project on GCP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Step 3 : Create a VM instance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Step 4: Make external IP address as static</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Step 5 : Install Google Cloud SDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">Step 6 : Install Jupyter notebook and other packages</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">Step 7: Set up the VM server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">Step 8 : Launching Jupyter Notebook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
@@ -1055,9 +969,9 @@ A Bidirectional structure with LSTM blocks is a first thing to try for recent NL
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/en/2018/03/05/Sequence-Model-week1/';
-          this.page.identifier = '2018/03/05/Sequence-Model-week1/';
-          this.page.title = 'Sequence Model week1';
+          this.page.url = 'http://yoursite.com/en/2018/04/18/Jupyter on GCP/';
+          this.page.identifier = '2018/04/18/Jupyter on GCP/';
+          this.page.title = 'Running Jupyter Notebook on Google Cloud for a Kaggle challenge';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://haochen1.disqus.com/embed.js';
