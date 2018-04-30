@@ -3,6 +3,151 @@
   
     
     <entry>
+      <title><![CDATA[A brief introduction to Chatbots with Dialogflow]]></title>
+      <url>/en/2018/04/29/A%20brief%20introduction%20to%20Chatbots%20with%20DialogFlow/</url>
+      <content type="html"><![CDATA[<p>Nowadays, I'm working on a Chatbot project with Google Dialogflow. In this article, I will present some notions about Dialogflow and Chatbots. Then, I will talk about how to create a simple Chatbot with Dialogflow Platform.</p>
+<h1>What is Dialogflow?</h1>
+<p><img src="http://ww1.sinaimg.cn/mw690/b66c02d5gy1fqrbon8ayyj20zk09fdgh.jpg" alt=""></p>
+<p>According to Wikipedia:</p>
+<blockquote>
+<p>Dialogflow (formerly Api.ai, Speaktoit) is a Google-owned developer of human–computer interaction technologies based on natural language conversations. The company is best known for creating the Assistant (by Speaktoit), a virtual buddy for Android, iOS, and Windows Phone smartphones that performs tasks and answers users' question in a natural language. Speaktoit has also created a natural language processing engine that incorporates conversation context like dialogue history, location and user preferences.</p>
+</blockquote>
+<p>DialogFlow is quite a good choice to learn how to create Chatbots that you can then integrate them into your own websites or Apps.</p>
+<h1>Why choose Dialogflow?</h1>
+<p>There are several reasons for choosing Dialogflow:</p>
+<ol>
+<li>
+<p><strong>Price</strong></p>
+<p>If you just want to learn building a Chatbot or you don't have many users, a Standard Edition is totally free. As you can see below
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrcnsvpo6j20u20h1ac0.jpg" alt=""></p>
+</li>
+<li>
+<p><strong>Multi-channel easy integration</strong></p>
+<p>Dialogflos provides one-click integrations to most popular messaging Apps like Facebook Messenger, Slack, Twitter, Kik, Line, Skype, Telegram, Twilio and Viber. Even to some voice assistants like Google Assistant, Amazon Alexa and Microsoft Cortana.</p>
+</li>
+<li>
+<p><strong>Natural Language Processing(NLP)</strong></p>
+<p>Compared to some platforms which works on predefined questions like Chatfuel, Dialogflow can offer better user experience with NLP. DialogFlow Agents are pretty good at NLP.</p>
+</li>
+</ol>
+<h1>How do Chatbots work?</h1>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrj0wrppej20z50e8419.jpg" alt=""></p>
+<p>There are detailed steps:</p>
+<ol>
+<li>A user sends a text/voice message to a device or an App</li>
+<li>The App/Device transfers the message to Dialogflow</li>
+<li>The message is categorized and matched to a corresponding intent (Intents are defined manually by developers in Dialogflow)</li>
+<li>We define following actions for each intent in the fulfillment (Webhook).</li>
+<li>When a certain intent is found by Dialogflow, the webhook will use external APIs to find a response in external data bases.</li>
+<li>The external data bases send back required information to the webhook.</li>
+<li>Webhook sends formatted response to the intent.</li>
+<li>Intent generates actionable data acoording to different channels.</li>
+<li>The actionable data go to output Apps/Devices.</li>
+<li>The user gets a text/image/voice response.</li>
+</ol>
+<h1>How to build your first chatbot?</h1>
+<h2>Create an agent</h2>
+<ol>
+<li>If you don't already have a Dialogflow account, sign up. If you have an account, login.</li>
+<li>Click on <strong>Create Agent</strong> in the left navigation and fill in the fields.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrm0d6cv2j20jr0famxc.jpg" alt=""></li>
+<li>Give a name and set a language to your agent. Then, click the Save button.</li>
+</ol>
+<h2>Create an intent</h2>
+<p>An intent maps what a user says with what your agent does. This first intent will cover when the user asks for the weather.</p>
+<p>To create an intent:</p>
+<ol>
+<li>
+<p>Click on the plus icon add next to Intents. You will notice some default intents are already in your agent. Just leave them be for now.</p>
+</li>
+<li>
+<p>Enter a name for your intent. This can be whatever you'd like, but it should be intuitive for what the intent is going to accomplish.</p>
+</li>
+<li>
+<p>In the Training Phrases section, enter examples of what you might expect a user to ask for. Since you're creating a weather agent, you want to include questions about locations and different times. The more examples you provide, the more ways a user can ask a question and the agent will understand.</p>
+<p>Enter these examples:</p>
+<ul>
+<li>What is the weather like</li>
+<li>What is the weather supposed to be</li>
+<li>Weather forecast</li>
+<li>What is the weather today</li>
+<li>Weather for tomorrow</li>
+<li>Weather forecast in San Francisco tomorrow</li>
+</ul>
+<p>In the last three examples you'll notice the words today and tomorrow are highlighted with one color, and San Francisco is highlighted with another. This means they were annotated as parameters that are assigned to existing date and city system entities. These date and city parameters allow Dialogflow to understand other dates and cities the user may say, and not just &quot;today&quot;, &quot;tomorrow&quot;, and &quot;San Francisco&quot;.
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrmeevmr5j20h70frt91.jpg" alt=""></p>
+</li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+</ol>
+<h2>Add response</h2>
+<p>Now you'll add basic responses to the intent so the agent doesn't just sit there in awkward silence. As mentioned before, responses added to an intent don't use external information. So this will only address the information the agent gathered from the user's request.</p>
+<p>If you've navigated away from the &quot;weather&quot; intent, return to it by clicking on Intents and then the &quot;weather&quot; intent.</p>
+<ol>
+<li>
+<p>In the same way you entered the Training Phrases, add the lines of text below in the Response section:</p>
+<ul>
+<li>Sorry I don't know the weather</li>
+<li>I'm not sure about the weather on <code>$date</code></li>
+<li>I don't know the weather for <code>$date</code> in <code>$geo-city</code> but I hope it's nice!</li>
+</ul>
+<p>You can see the last two responses reference entities by their value placeholders. <code>$date</code> will insert the date from the request, and <code>$geo-city</code> will insert the city.</p>
+<p>When the agent responds, it takes into account the parameter values gathered and will use a reply that includes those values it picked up. For example, if the request only includes a date, the agent will use the second response from the list.</p>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrmmcsqj9j20gt08odfy.jpg" alt=""></p>
+</li>
+<li>
+<p>Click <strong>Save</strong></p>
+</li>
+</ol>
+<h2>Try it out</h2>
+<p>In the console on the right, type in a request. The request should be a little different than the examples you provided in the Training Phrases section. This can be something like &quot;How's the weather in Denver tomorrow&quot;. After you type the request, hit &quot;Enter/Return&quot;.</p>
+<ul>
+<li>Response - shows an appropriate response from the ones provided
+<ul>
+<li>The response chosen is based off of the values you provide in the query (e.g. By providing only the date, the agent should respond with the option that only includes the date)</li>
+</ul>
+</li>
+<li>Intent - weather again a successful trigger of the intent</li>
+<li>Parameter - the values you provided in your query, should be reflected in the appropriate response
+<img src="http://ww1.sinaimg.cn/large/b66c02d5gy1fqrn3vd2c9j208r0hdmx9.jpg" alt=""></li>
+</ul>
+<h2>Basic Fulfillment(Webhook)</h2>
+<p>Depending on your need, you can define custom Webhook to use external APIs and get extra data from external databases. A webhook can be written in Python and Node.js. It can be held in cloud servers like Heroku, AWS and Google Cloud Platform, and local servers. Please choose your favorite programing language and server:
+<a href="">https://dialogflow.com/docs/getting-started/basic-fulfillment-conversation</a></p>
+<h2>Integration to your channels</h2>
+<p>Dialogflos provides one-click integrations to most popular messaging Apps and voice assistants. Integrations can be done within a few seconds.You can choose your favorite channels and follow the official integration tutorial on the Dialogflow website. Please see:
+<a href="">https://dialogflow.com/docs/integrations/</a></p>
+<h1>Conclusion</h1>
+<p>In this article, you have seen what is Dialogflow, some advantages of choosing this platform, how a Chatbot works within Dialogflow and how to create your first Chatbot. Thanks for your reading. Do not hesitate to contact me if there is any problem.</p>
+<h1>References</h1>
+<ol>
+<li><a href="https://dialogflow.com/docs/getting-started/basics" target="_blank" rel="noopener">Dialogflow Quick Starts</a></li>
+<li><a href="https://chatbotslife.com/api-ai-lets-create-a-movie-chatbot-in-minutes-f68d8bb568f9" target="_blank" rel="noopener">DialogFlow(formerly API.AI): Let’s create a Movie ChatBot in minutes
+</a></li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Chatbot </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Dialogflow </tag>
+            
+            <tag> Chatbot </tag>
+            
+            <tag> NLP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Running Jupyter Notebook on Google Cloud for a Kaggle challenge]]></title>
       <url>/en/2018/04/18/Jupyter%20on%20GCP/</url>
       <content type="html"><![CDATA[<p>When you start a Kaggle challenge, a computer is usually needed to hold all dataset in the memory and accelerate the training with your GPU. Rather than purchasing a new computer,  I'd like to do it free with 300$ credit offered by Google Cloud Platform.</p>
@@ -203,9 +348,9 @@ Encoder-decoder model can lose performance when a sentence is too long.</p>
         
         <tags>
             
-            <tag> Deep Learning </tag>
-            
             <tag> NLP </tag>
+            
+            <tag> Deep Learning </tag>
             
         </tags>
         
@@ -291,9 +436,9 @@ You can't guarantee that an axis is well aligned to a feature.</p>
         
         <tags>
             
-            <tag> Deep Learning </tag>
-            
             <tag> NLP </tag>
+            
+            <tag> Deep Learning </tag>
             
         </tags>
         
@@ -509,9 +654,9 @@ A Bidirectional structure with LSTM blocks is a first thing to try for recent NL
         
         <tags>
             
-            <tag> Deep Learning </tag>
-            
             <tag> NLP </tag>
+            
+            <tag> Deep Learning </tag>
             
         </tags>
         
