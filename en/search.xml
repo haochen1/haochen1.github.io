@@ -222,6 +222,7 @@ in your /home/haroldsoh/.bashrc ?
 <pre><code>jupyter notebook --generate-config
 </code></pre>
 <p>We’re going to add a few lines to your Jupyter configuration file; the file is plain text so, you can do this via your favorite editor (e.g., vim, emacs). Make sure you replace the port number with the one you allowed firewall access to in step 4.</p>
+<p>On Mac, a folder name that starts by a dot is a hidden floder. In a text editor, to view hidden files and folders in the Open/Save dialog, just press Command+Shift+Period (that’s the . key).</p>
 <pre><code>c = get_config()
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
