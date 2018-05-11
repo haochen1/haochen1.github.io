@@ -200,7 +200,7 @@ follow steps on yhe website to initialize your Google Cloud SDK.</p>
 <p>Then, install anaconda3 into your VM,</p>
 <pre><code>wget http://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh	
 
-bash Anaconda3-4.0.0-Linux-x86_64.sh
+bash Anaconda3-5.1.0-Linux-x86_64.sh
 </code></pre>
 <p>and follow the on-screen instructions. The defaults usually work fine, but answer yes to the last question about prepending the install location to PATH:</p>
 <pre><code>Do you wish the installer to prepend the 
