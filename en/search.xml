@@ -3,6 +3,84 @@
   
     
     <entry>
+      <title><![CDATA[My first Kqggle challenge]]></title>
+      <url>/en/2018/05/15/My%201st%20Kaggle%20challenge/</url>
+      <content type="html"><![CDATA[<p>This article was written after finishing my first <a href="https://www.kaggle.com" target="_blank" rel="noopener">Kaggle</a> challenge - <a href="https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection" target="_blank" rel="noopener">TalkingData AdTracking Fraud Detection Challenge</a> to share what I've learnt from this challenge. In this article, I'll begin with a breif introduction to Kaggle and to TalkingData AdTracking Fraud Detection Challenge, then I will talk about what I've learnt after this challenge.</p>
+<h1>Kaggle Platform</h1>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1frb9k4qbqpj20pk05k0su.jpg" alt=""></p>
+<p>According to Wikipedia,</p>
+<blockquote>
+<p>Kaggle is a platform for predictive modelling and analytics competitions in which statisticians and data miners compete to produce the best models for predicting and describing the datasets uploaded by companies and users. This crowdsourcing approach relies on the fact that there are countless strategies that can be applied to any predictive modelling task and it is impossible to know beforehand which technique or analyst will be most effective.</p>
+</blockquote>
+<p>Recently, people added more functionalities to Kaggle, such as sharing your code in &quot;Kernels&quot;, asking a question in &quot;Discussions&quot;, learning a new Data Science technique in &quot;Learn&quot; and finding your job in &quot;Jobs&quot; etc. Kaggle has became the # 1 platform for data scientists and machine learners.</p>
+<h1>TalkingData AdTracking Fraud Detection Challenge</h1>
+<p><img src="http://ww1.sinaimg.cn/large/b66c02d5gy1frc3q2euw7j20cc036glh.jpg" alt=""></p>
+<p>Fraud risk is everywhere, but for companies that advertise online, click fraud can happen at an overwhelming volume, resulting in misleading click data and wasted money. Ad channels can drive up costs by simply clicking on the ad at a large scale. With over 1 billion smart mobile devices in active use every month, China is the largest mobile market in the world and therefore suffers from huge volumes of fradulent traffic.</p>
+<p>TalkingData, China’s largest independent big data service platform, covers over 70% of active mobile devices nationwide. They handle 3 billion clicks per day, of which 90% are potentially fraudulent. Their current approach to prevent click fraud for app developers is to measure the journey of a user’s click across their portfolio, and flag IP addresses who produce lots of clicks, but never end up installing apps. With this information, they've built an IP blacklist and device blacklist.</p>
+<p>While successful, they want to always be one step ahead of fraudsters and have turned to the Kaggle community for help in further developing their solution. In their 2nd competition with Kaggle, you’re challenged to build an algorithm that predicts whether a user will download an app after clicking a mobile app ad. To support your modeling, they have provided a generous dataset covering approximately 200 million clicks over 4 days!</p>
+<h1>Steps of finishing a challenge</h1>
+<p>There are 4 crucial steps with their importances:</p>
+<ul>
+<li>80% feature engineering</li>
+<li>10% making local validation as fast as possible</li>
+<li>5% hyper parameter tuning</li>
+<li>5% ensembling</li>
+</ul>
+<h2>Feature engineering</h2>
+<p>The most important step for winning a challenge is the feature engineering which can take up 80% importances. For a better prediction, you need add up all features that you can find or compose from your original dataset, such as Group by, unique, count, cumulative_count, sort, shift(next &amp; previous), mean, variance, etc.</p>
+<h2>Making local validation</h2>
+<p>The next step is to make a local validation set as fast as possible. Once it  is created, you can tune your hyperparameters and test your feature importances on your local validation set.</p>
+<p>If you don't have a good validation scheme then you rely solely on LB probing, which can easily lead to overfit.</p>
+<h2>Hyper parameter tuning</h2>
+<p>Two most used methods are XGBoost and Light GBM, you can refer to this website <a href="https://sites.google.com/view/lauraepp/parameters?authuser=0" target="_blank" rel="noopener">xgboost/Light GBM parameters</a> to set up all your parameters quickly.</p>
+<p>To get a better accuracy, you need to tune your parameters with <a href="http://scikit-learn.org/stable/modules/grid_search.html" target="_blank" rel="noopener">Gird Search</a>. For example:</p>
+<pre><code>param_grid = {'n_estimators': [300, 500], 'max_features': [10, 12, 14]}
+
+model = grid_search.GridSearchCV(estimator=rfr, param_grid=param_grid, n_jobs=1, cv=10, verbose=20, scoring=RMSE)
+
+model.fit(X_train, y_train)
+</code></pre>
+<h2>Ensemble</h2>
+<p>It is more and more difficult to get good predictions with just a single model. If we can combine several medels, the prediction result could usually be better.</p>
+<p>There are some ensemble methods:</p>
+<ul>
+<li><strong>Bagging</strong>: Each Base Model is trained using different random subsets of the training data, and the final results are voted by each base model with the same weight. That is the principle of Random Forest.</li>
+<li><strong>Boosting</strong>: The Base Model is trained iteratively, each time modifying the weight of the training sample based on the prediction errors in the previous iteration. This is also the principle of Gradient Boosting. Better than Bagging but easier to Overfit.</li>
+<li><strong>Blending</strong>: Different Base Models are trained with disjoint data and their outputs are averaged (weighted). Simple implementation, but less use of training data.</li>
+<li><strong>Stacking</strong>: The whole process is very much like Cross Validation. First, the training data is divided into 5 parts, followed by a total of 5 iterations. At each iteration, 4 data are trained as Training Sets for each Base Model, and then the remaining Hold-out Set is used for prediction. At the same time, its predictions on test data should also be preserved. In this way, each Base Model will make a prediction of one of the training data at each iteration and make a prediction of all the test data. After 5 iterations have been completed, we have obtained a matrix of # training data rows x #Base Model number. This matrix is ​​then used as the training data of the second-level Model. After the second-level Model is trained, the previously saved Base Model predicts the test data (because each Base Model has been trained five times, and the entire test data has been predicted five times, so for these five requests An average value, which results in a matrix with the same shape as the second-level training data) is taken out for prediction and the final output is obtained.<img src="https://static.leiphone.com/uploads/new/article/740_740/201703/58cbae21d1aee.jpg?imageMogr2/format/jpg/quality/90" alt=""></li>
+</ul>
+<h1>Conclusion</h1>
+<p>Kaggle is possibly the best platform for data scientists to practice their skills. To start with this challenge, I got inspired from kernels and discussions. Then I tried Light GBM and XGBoost that I had never used before. I'll continue fighting on Kaggle!</p>
+<h1>References</h1>
+<ol>
+<li>
+<p><a href="https://www.leiphone.com/news/201703/kCMQyffeP0qUgD9a.html" target="_blank" rel="noopener">TOP5%Kaggler: How to get into top 10% ranking(In Chinese)</a></p>
+</li>
+<li>
+<p><a href="https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56283" target="_blank" rel="noopener">Solution #6 overview</a></p>
+</li>
+<li>
+<p><a href="https://sites.google.com/view/lauraepp/parameters?authuser=0" target="_blank" rel="noopener">xgboost/Light GBM parameters</a></p>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> Kaggle </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Kaggle </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[A brief introduction to Chatbots with Dialogflow]]></title>
       <url>/en/2018/04/29/A%20brief%20introduction%20to%20Chatbots%20with%20DialogFlow/</url>
       <content type="html"><![CDATA[<p>Nowadays, I'm working on a Chatbot project with Google Dialogflow. In this article, I will present some notions about Dialogflow and Chatbots. Then, I will talk about how to create a simple Chatbot with Dialogflow Platform.</p>
@@ -264,9 +342,9 @@ c.NotebookApp.port = &lt;Port Number&gt;
         
         <tags>
             
-            <tag> Google Cloud Platform </tag>
-            
             <tag> Kaggle </tag>
+            
+            <tag> Google Cloud Platform </tag>
             
         </tags>
         
